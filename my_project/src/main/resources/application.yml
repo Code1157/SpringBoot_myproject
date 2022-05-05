@@ -1,0 +1,80 @@
+server:
+  port: 80
+  tomcat:
+    uri-encoding: UTF-8
+    accesslog:
+      enabled: true
+  servlet:
+    encoding:
+      enabled: true
+      charset: UTF-8
+      force: true
+
+
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/my_graduation?characterEncodeing=utf-8&serverTimezone=UTC
+      username: root
+      #      password: root
+      password: 314336984@QQ.com
+
+  profiles:
+    active: local
+  # 开启上传和下载
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 8MB    # 最大的文件大小
+      max-request-size: 8MB   # 单次最大请求大小
+  #  web:
+  #    resources:
+  #      static-locations: classpath:static/
+  #  mvc:
+  #    static-path-pattern:
+
+  redis:
+    #    host: 127.0.0.1
+    #    port: 6379
+    password: 1234567890
+  mvc:
+    static-path-pattern: /static/**
+
+# 修改banner
+#  main:
+#    banner-mode: off
+
+# 日志
+#logging:
+#  level:
+#    com:
+#      yuhua:
+#        plus: warn
+
+# 配置MP相关配置
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+      # 数据库名称前缀
+      #      table-prefix:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  # 如果是放在src/main/java目录下 classpath:/com/*/*/mapper/*Mapper.xml
+  # 如果是放在resource目录 classpath:/mapper/**.xml
+  mapper-locations: classpath:/mapper/**.xml
+
+# 静态资源 虚拟路径映射
+static:
+  file:
+    upload: D:\software\java\IDEA_WorkSpace\my_graduation_project\src\main\resources\static
+#    upload: E:/myGraduation/static
+#    upload: /usr/local/static
+    mapping:
+
+# 音乐上传路径
+songs:
+  upload-path: ${static.file.upload}
+songbox:
+  upload-path: ${static.file.upload}

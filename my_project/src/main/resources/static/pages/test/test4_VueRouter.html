@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue路由</title>
+    <script src="../../js/vue.js"></script>
+    <script src="../../js/axios-0.24.0.js"></script>
+    <script src="../../js/jquery.min.js"></script>
+    <script src="https://unpkg.com/vue-router@3.0.0/dist/vue-router.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>hello world</h1>
+    <p>
+        <router-link to="/notfound">not found/</router-link>
+        <router-link to="/home">home p/</router-link>
+        <router-link to="/about">aobut p</router-link>
+    </p>
+    <router-view></router-view>
+</div>
+</body>
+<script>
+    const NotFound = {template: '<p>Page not found</p>'}
+    const Home = {template: '<p>home page</p>'}
+    const About = {template: '<p>about page</p>'}
+
+    const routes = [
+        {path: '/home', component: Home},
+        {path: '/about', component: About},
+        {path: '/notfound', component: NotFound}
+    ];
+
+    const router = new VueRouter({
+        routes:routes
+    });
+
+    new Vue({
+        el: '#app',
+        router:router
+    })
+</script>
+</html>

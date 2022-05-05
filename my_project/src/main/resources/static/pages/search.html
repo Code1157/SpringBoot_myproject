@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>搜索</title>
+    <link rel="stylesheet" href="../css/normalize.css"/>
+    <link rel="stylesheet" href="../css/iconfont.css">
+    <link rel="stylesheet" href="../css/header.css"/>
+    <link rel="stylesheet" href="../css/footer.css"/>
+    <script src="../js/vue.js"></script>
+    <script src="../js/axios-0.24.0.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/search/search.css"/>
+</head>
+<body>
+<div id="app">
+    <div class="wrap">
+        <header class="header" id="header">
+            <div class="header_content">
+                <div class="header_content_top">
+                    <h1>
+                        <a href="http://localhost/pages/index.html">
+                            <img src="http://localhost/images/logo/logo5.png" alt=""/>
+                        </a>
+                    </h1>
+                    <ul>
+                        <li class="concert_hall selected_li">音乐厅</li>
+                        <li class="my_musics">我的音乐</li>
+                    </ul>
+                    <div class="mod_top_login">
+                        <a href="javascript:;">登录</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <div class="mod_search">
+                <div class="mod_search_frame">
+                    <input type="text" class="search_ip1" name="search" maxlength="600" placeholder="搜索音乐"
+                           autocomplete="off" v-model="inputValue"
+                           search-box/>
+                    <span class="iconfont search_icon" search-buttom>&#xe600;</span>
+                </div>
+            </div>
+            <div class="mod_playlist">
+                <div class="js_box">
+                    <div class="mod_tab">
+                        <a href="javascript:;" class="mod_tab_item mod_tab_current">
+                            单曲
+                        </a>
+                        <a href="javascript:;" class="mod_tab_item">
+                            专辑
+                        </a>
+                        <a href="javascript:;" class="mod_tab_item">
+                            MV
+                        </a>
+                        <a href="javascript:;" class="mod_tab_item">
+                            歌单
+                        </a>
+                    </div>
+                    <div class="profile_content">
+                        <div class="js_sub">
+                            <div class="mod_songlist_toolbar">
+                                <a class="mod_btn">
+                                    <span class="iconfont">&#xe610;</span>
+                                    播放全部
+                                </a>
+                                <a class="mod_btn">
+                                    <span class="iconfont">&#xe661;</span>
+                                    添加到
+                                </a>
+                                <a class="mod_btn">
+                                    <span class="iconfont">&#xe6ce;</span>
+                                    下载
+                                </a>
+                                <a class="mod_btn">
+                                    <span class="iconfont">&#xe7b1;</span>
+                                    批量操作
+                                </a>
+                            </div>
+                            <div class="mod_songlist" id="songshow">
+                                <ul class="songlist_header">
+                                    <li class="songlist_header_name">歌曲</li>
+                                    <li class="songlist_header_author">歌手</li>
+                                    <li class="songlist_header_album">专辑</li>
+                                    <li class="songlist_header_time">时长</li>
+                                </ul>
+                                <ul class="songlist_list">
+                                    <li v-for="(song, index) of songList">
+                                        <div class="songlist_item ">
+                                            <div class="songlist_number">{{index + 1}}</div>
+                                            <div class="songlist_songname">
+                                                <span class="songlist_songname_txt">
+                                                    <a v-bind:href="url(song.id)">{{song.songname}}</a>
+                                                </span>
+                                                <div class="mod_list_menu">
+                                                    <a class="list_menu_item list_menu_play" title="播放"
+                                                       v-bind:sid="song.id">
+                                                        <span class="iconfont lmi_play">&#xe75d;</span>
+                                                        <span class="icon_txt">播放</span>
+                                                    </a>
+                                                    <a class="list_menu_item list_menu_add" title="添加到播放列表"
+                                                       v-bind:sid="song.id">
+                                                        <span class="iconfont lmi_add">&#xe7b2;</span>
+                                                        <span class="icon_txt">添加到播放列表</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="songlist_artist">
+                                                <a href="javascript:;" class="playlist__author">{{song.singer}}</a>
+                                            </div>
+                                            <div class="songlist_album">
+                                                <a href="javascript:;">{{song.album}}</a>
+                                            </div>
+                                            <div class="songlist_time_">{{song.timelength}}</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="search_tip" v-bind:class="{'search_tip_hidden':isHidden, 'search_tip_block':isShow}" id="none_box">
+                                <div class="search_tip_none">
+                                    <p>
+                                        很抱歉,没有找到与
+                                        <span class="txt_heightlight"></span>
+                                        相关的歌曲
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer"></footer>
+        <div class="copyright"></div>
+        <strong id="tip"></strong>
+    </div>
+</div>
+<div id="popupbox">
+    <div class="mod_operate_menu">
+        <div class="operate_menu_cont">
+            <ul class="operate_menu_list operate_menu_top_line operate_menu_bottom_line">
+                <li v-for="songbox of songBoxList" class="operate_menu_item">
+                    <a class="operate_menu_link" v-bind:songboxid="songbox.id">{{songbox.title}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../js/header.js"></script>
+<script src="../js/search/search.js"></script>
+</html>

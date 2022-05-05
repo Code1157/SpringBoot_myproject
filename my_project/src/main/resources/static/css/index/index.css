@@ -1,0 +1,507 @@
+@media (max-width: 320px) {
+    /*0~320*/
+    body {
+        /* background: pink; */
+    }
+}
+
+@media (min-width: 321px) and (max-width: 375px) {
+    /*321~768*/
+    body {
+        /* background: red; */
+    }
+}
+
+@media (min-width: 376px) and (max-width: 425px) {
+    /*376~425*/
+    body {
+        /* background: yellow; */
+    }
+}
+
+@media (min-width: 426px) and (max-width: 768px) {
+    /*426~768*/
+    body {
+        /* background: blue; */
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1199px) {
+
+    /*769~1199*/
+    body {
+        /* background: green; */
+    }
+}
+
+@media (min-width: 1200px) {
+    /*1200~+∞*/
+}
+
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.search {
+    max-width: 1200px;
+    height: 50px;
+    line-height: 50px;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.search input[search-box] {
+    width: 600px;
+    height: 40px;
+    transition: all 0.3s;
+    padding-left: 40px;
+    margin-top: 7px;
+    border: 1px solid #cccccc;
+    outline: none;
+}
+
+.search input[search-box]:focus {
+    outline: 1px solid rgb(0, 132, 214);
+}
+
+.search input,
+.search > div {
+    margin-right: 15px;
+}
+
+.search_filters {
+    width: 230px;
+    height: 40px;
+    border: 1px solid #cccccc;
+    outline: none;
+}
+
+.search > div {
+    position: relative;
+}
+
+.search div:first-child span {
+    position: absolute;
+    font-size: 26px;
+    line-height: 50px;
+    left: 7px;
+}
+
+.search > div[box]::after {
+    height: 40px;
+    top: 6px;
+    border-left: 1px solid #cccccc;
+    content: "";
+    position: absolute;
+    right: 19px;
+}
+
+.search input[search-buttom] {
+    width: 80px;
+    height: 40px;
+    margin-top: 1px;
+    border: 1px solid #cccccc;
+}
+
+.search input[search-buttom]:hover {
+    outline: 1px solid rgb(0, 132, 214);
+}
+
+.recommend {
+    max-height: 1200px;
+    margin-bottom: 50px;
+}
+
+.rec_nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: baseline;
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 30px;
+}
+
+.rec_nav_title {
+    font-size: 28px;
+    font-weight: bolder;
+    margin-right: 40px;
+}
+
+.rec_active {
+    color: lightskyblue;
+}
+
+.rec_nav a {
+    font-size: 18px;
+    font-weight: 200;
+    margin-right: 70px;
+}
+
+.rec_nav a:hover {
+    color: lightskyblue;
+}
+
+.rec_list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.rec_list_item {
+    width: 18%;
+    overflow: hidden;
+}
+
+.rec_list_item_cover {
+    position: relative;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.rec_list_item_cover img {
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+}
+
+.rec_list_item_cover:hover img {
+    transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    /* IE 9 */
+    -webkit-transform: scale(1.1);
+    /* Safari and Chrome */
+}
+
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    transition: all 0.5s ease-in-out;
+    z-index: 3;
+    opacity: 0;
+    filter: Alpha(opacity=0);
+}
+
+.rec_list_item_cover:hover .screen {
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 1;
+    filter: Alpha(opacity=100);
+    transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    /* IE 9 */
+    -webkit-transform: scale(1.1);
+    /* Safari and Chrome */
+}
+
+.screen span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.rec_list_item p {
+    font-size: 16px;
+    font-weight: 200;
+}
+
+.newsong {
+    width: 1200px;
+    margin-bottom: 50px;
+}
+
+.ns_nav {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    line-height: 40px;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+
+.ns_nav_title {
+    font-size: 28px;
+    font-weight: bolder;
+    margin-right: 40px;
+}
+
+.ns_active {
+    color: lightskyblue;
+}
+
+.ns_nav a {
+    font-size: 18px;
+    font-weight: 200;
+    margin-right: 70px;
+}
+
+.ns_list_boxs {
+    width: 100%;
+}
+
+.ns_list_boxs ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+}
+
+.ns_list_boxs ul li {
+    width: 33.33%;
+    display: inline-block;
+}
+
+.ns_list_boxs ul li div.ns_list_boxs2 {
+    padding-top: 12px;
+    border-bottom: 1px solid #f2f2f2;
+    display: inline-block;
+    width: calc(100% - 30px);
+    font-size: 14px;
+    padding-bottom: 13px;
+}
+
+.ns_list_boxs2 div {
+    float: left;
+}
+
+.ns_list_boxs_cover {
+    height: 86px;
+    overflow: hidden;
+}
+
+.ns_list_boxs_cover a {
+    height: 86px;
+    position: relative;
+}
+
+.ns_list_boxs_cover a img {
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+}
+
+.ns_list_boxs_cover:hover a img {
+    transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    /* IE 9 */
+    -webkit-transform: scale(1.1);
+    /* Safari and Chrome */
+}
+
+.nlbc_screen {
+    position: absolute;
+    width: 86px;
+    height: 86px;
+    background: transparent;
+    transition: all 0.3s ease-in-out;
+    z-index: 3;
+    text-align: center;
+}
+
+.ns_list_boxs_cover:hover .nlbc_screen {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nlbc_screen span {
+    font-size: 30px;
+    color: transparent;
+    line-height: 86px;
+    transition: all 0.3s ease-in-out;
+}
+
+.ns_list_boxs_cover:hover .nlbc_screen span {
+    color: white;
+    transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+}
+
+.ns_list_boxs_detail {
+    width: 58%;
+    height: 86px;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ns_list_boxs_detail * {
+    max-width: 50%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ns_list_boxs_detail a:hover {
+    color: lightskyblue;
+}
+
+.song_time {
+    height: 86px;
+    line-height: 86px;
+}
+
+.leaderboard {
+    width: 1200px;
+    margin-bottom: 50px;
+}
+
+.lb_nav {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    line-height: 40px;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+
+.lb_nav_title {
+    font-size: 28px;
+    font-weight: bolder;
+    margin-right: 40px;
+}
+
+.lb_nav div {
+    font-size: 18px;
+}
+
+.lb_nav div a:hover {
+    color: lightskyblue;
+}
+
+.lb_list {
+    font-size: 0;
+    margin-right: -20px;
+}
+
+.lb_list_item {
+    display: inline-block;
+    z-index: 2;
+    width: 20%;
+}
+
+.lb_list_item_box {
+    position: relative;
+    margin-right: 20px;
+    height: 500px;
+    overflow: hidden;
+}
+
+.llib_bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 567px;
+    background: #D77A90;
+}
+
+.llib_icon_play {
+    color: black;
+    font-size: 23px;
+    position: absolute;
+    top: 25%;
+    left: 38%;
+    background: white;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    padding-left: 16px;
+    padding-top: 9px;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.llib_line {
+    position: absolute;
+    color: white;
+    font-size: 50px;
+    top: 22.5%;
+    left: 38%;
+}
+
+.lb_list_item_box:hover .llib_icon_play {
+    opacity: 1;
+}
+
+.lb_list_item_box:hover .llib_line {
+    display: none;
+}
+
+.lb_list_item_hand {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    margin-left: -100px;
+    width: 200px;
+    text-align: center;
+}
+
+.lb_list_item_hand div {
+    font-size: 20px;
+    color: white;
+    font-weight: 400;
+
+}
+
+.llih_title {
+    float: none;
+    height: 36px;
+    line-height: 1;
+    font-size: 26px;
+    color: #fff;
+    font-weight: 400;
+}
+
+.lb_list_item_songlist,
+.lb_list_item_songlist a {
+    font-size: 16px;
+    color: #fff;
+}
+
+.lb_list_item_songlist {
+    position: absolute;
+    top: 188px;
+    left: 30px;
+    right: 30px;
+    white-space: nowrap;
+}
+
+.llis_song {
+    position: relative;
+    padding-left: 15px;
+    margin-bottom: 27px;
+}
+
+.llis_song_number {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.llis_song_name,
+.llis_song_artist {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.llis_song_name {
+    border-bottom: 5px;
+}

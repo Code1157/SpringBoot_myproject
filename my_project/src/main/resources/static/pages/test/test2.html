@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>test2</title>
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    {{ message }}
+</div>
+<div id="app-2">
+        <span v-bind:title="message">
+            tip!
+        </span>
+</div>
+<div id="app-4">
+    <ol>
+        <li v-for="todo in todos">
+            {{ todo.text }}
+        </li>
+    </ol>
+</div>
+<div id="app-5">
+    <p>{{ message }}</p>
+    <button v-on:click="reverseMessage">反转消息</button>
+</div>
+<div id="app-6">
+    <p>{{ message }}</p>
+    <input v-model="message">
+</div>
+<div id="app-7">
+    <ol>
+        <!--
+          现在我们为每个 todo-item 提供 todo 对象
+          todo 对象是变量，即其内容可以是动态的。
+          我们也需要为每个组件提供一个“key”，稍后再
+          作详细解释。
+        -->
+        <todo-item
+                v-for="items in groceryList"
+                v-bind:todo="items"
+                v-bind:key="items.id"
+        ></todo-item>
+    </ol>
+</div>
+<ul id="example-1">
+    <li v-for="item in items" :key="items.id">
+        <span>test</span>
+        {{ item.message }}
+    </li>
+</ul>
+<div id="component-test1">
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+</div>
+</body>
+<script>
+    Vue.component('button-counter', {
+       data: function() {
+           return {
+               count: 0
+           }
+       },
+        template: '<button @click="count++">{{ count }} times.</button>'
+    });
+    var example2 = new Vue({
+       el: '#component-test1'
+    });
+    var example1 = new Vue({
+        el: '#example-1',
+        data: {
+            items: [
+                { message: 'Foo' },
+                { message: 'Bar' }
+            ]
+        }
+    });
+    // 定义名为 todo-item 的新组件
+    Vue.component('todo-item', {
+        // todo-item 组件现在接受一个
+        // "prop"，类似于一个自定义 attribute。
+        // 这个 prop 名为 todo。
+        props: ['todo'],
+        template: '<li>{{ todo.text }}</li>'
+    });
+    var app7 = new Vue({
+        el: '#app-7',
+        data: {
+            groceryList: [
+                {  text: '蔬菜' },
+                {  text: '奶酪' },
+                {  text: '随便其它什么人吃的东西' },
+            ]
+        }
+    });
+    var app6 = new Vue({
+        el: '#app-6',
+        data: {
+            message: 'Hello Vue!'
+        }
+    });
+    var app5 = new Vue({
+        el: '#app-5',
+        data: {
+            message: 'Hello Vue.js!'
+        },
+        methods: {
+            reverseMessage: function () {
+                this.message = this.message.split('').reverse().join('')
+            }
+        }
+    });
+    var app4 = new Vue({
+        el: '#app-4',
+        data: {
+            todos: [
+                {text: '学习 JavaScript'},
+                {text: '学习 Vue'},
+                {text: '整个牛项目'}
+            ]
+        }
+    });
+    var app2 = new Vue({
+        el: '#app-2',
+        data: {
+            // message: 'hello'
+            message: '页面加载于 ' + new Date().toLocaleDateString()
+        }
+    });
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'hello'
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,34 @@
+/*页脚*/
+footer {
+    height: 176px;
+    width: 100%;
+    background: #282828;
+}
+
+.copyright {
+    height: 90px;
+    width: 100%;
+    background: #1F1F1F;
+}
+
+.btn_bottom_top {
+    position: fixed;
+    right: 40px;
+    bottom: 100px;
+    width: 38px;
+    height: 38px;
+    z-index: 4;
+    background-color: #fff;
+    border: 1px solid #c9c9c9;
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+}
+
+.btn_bottom_top span {
+    line-height: 38px;
+    font-weight: bolder;
+}
+
+.btn_bottom_top:hover {
+    background-color: #EDEDED;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+    <script src="../js/axios-0.24.0.js"></script>
+    <script src="../js/element-ui-index.js"></script>
+    <link rel="stylesheet" href="../css/normalize.css"/>
+    <style>
+        body {
+            font-size: 18px;
+        }
+
+        #app table {
+            /*margin-top: 50px;*/
+        }
+
+        td {
+            background-color: #ffffff;
+            height: 25px;
+            line-height: 150%;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <table width="100%" cellpadding="4" cellspacing="1" border="1" align="center" bgcolor="#ccc">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>歌名</th>
+            <th>歌手</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(song, index) of songList">
+                <td>{{index + 1}}</td>
+                <td>{{song.songname}}</td>
+                <td>{{song.singer}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            songList: [] //当前页要展示的列表数据
+        },
+        created() {  // 钩子函数，vue对象初始化完成后自动执行
+            this.getAll();
+        },
+        methods: {
+            getAll: function () {
+                // 发送异步请求
+                axios.get("/songs").then((res) => {
+                    console.log(res.data.data);
+                    this.songList = res.data.data;
+                });
+            }
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,525 @@
+
+body, html {
+    min-width: 1100px;
+}
+
+.bg_screen_player {
+    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.35);
+    z-index: 2;
+}
+
+.bg_screen_player, .bg_screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.bg_screen_player, .bg_screen, body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.bg_screen {
+    /*display: none;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+    filter: blur(65px);
+    opacity: 0.6;
+    transform: translateZ(0);
+}
+
+.mod_player_login {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 9;
+    text-align: right;
+    padding-right: 28px;
+}
+
+.player_login_link {
+    position: relative;
+    float: left;
+    margin-right: 15px;
+    font-size: 0;
+}
+
+.player_login_avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 90px;
+    margin-right: 5px;
+    vertical-align: -10px;
+}
+
+.player_login_username {
+    display: inline-block;
+    max-width: 124px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    font-size: 16px;
+}
+
+.player_login_username, .player_login_out {
+    color: #fff;
+    opacity: 0.3;
+    filter: alpha(opacity=30);
+    line-height: 30px;
+}
+
+.player_login_link:hover, .player_login_username:hover,
+.player_login_out:hover {
+    opacity: 1;
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    color: #fff;
+}
+
+.player_login_out {
+    visibility: hidden;
+}
+
+/* 歌曲列表 */
+.mod_player {
+    height: 100vh;
+    margin: 0 8%;
+    position: relative;
+    z-index: 3;
+}
+
+.mod_player, .mod_player a {
+    color: #bdbdbe;
+    color: hsla(0, 0%, 88.2%, .8);
+}
+
+.player_bd, .player_ft {
+    position: absolute;
+    width: 100%;
+}
+
+.player_bd {
+    top: 12%;
+    bottom: 18%;
+    min-height: 328px;
+    cursor: default;
+}
+
+.player_content {
+    margin-right: 440px;
+}
+
+.mod_songlist_toolbar {
+    position: relative;
+    margin-bottom: 20px;
+    font-size: 0;
+}
+
+.song_btn {
+    min-width: 122px;
+    text-align: center;
+    opacity: .8;
+    filter: alpha(opacity=80);
+    border: 1px solid hsla(0, 0%, 100%, .2);
+}
+
+.song_btn, .song_btn:active, .song_btn:hover {
+    background-color: transparent;
+    color: #fff;
+}
+
+.song_btn:hover {
+    border: 1px solid #fff;
+}
+
+.song_btn, .song_btn_green {
+    border-radius: 2px;
+    font-size: 16px;
+    margin-right: 6px;
+    padding: 0 23px;
+    height: 38px;
+    line-height: 38px;
+    display: inline-block;
+    white-space: nowrap;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.mod_songlist_list {
+    overflow: hidden;
+    position: relative;
+}
+
+.msl_overview {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.mod_songlist, .msl_overview {
+    margin-right: 0;
+}
+
+.mod_songlist {
+    font-size: 16px;
+    overflow: hidden;
+}
+
+.songlist_header, .songlist_item {
+    padding-left: 62px;
+    position: relative;
+    padding-right: 95px;
+}
+
+.songlist_header, .songlist_item {
+    height: 50px;
+    line-height: 50px;
+    background-color: transparent;
+    color: inherit;
+}
+
+.songlist_edit {
+    display: block;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    margin-top: -9px;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(204, 204, 204);
+}
+
+.mod_songlist .songlist__edit {
+    left: 0;
+    border-color: rgba(225, 225, 225, 0.2);
+}
+
+.songlist_edit:hover {
+    /*border: 1px solid #fff;*/
+}
+
+.songlist_checkbox {
+    width: 16px;
+    height: 16px;
+    /*background-color: transparent;*/
+}
+
+.songlist_header_name, .songlist_songname {
+    float: left;
+    width: 68%;
+    position: relative;
+    white-space: normal;
+}
+
+.songlist_header_author, .songlist_artist {
+    width: 26%;
+    color: inherit;
+    float: left;
+    padding-left: 15px;
+    box-sizing: border-box;
+}
+
+.songlist_header_time, .songlist_time {
+    position: absolute;
+    top: 0px;
+    right: 38px;
+    width: 50px;
+}
+
+.songlist_list {
+    clear: both;
+    overflow: hidden;
+}
+
+.songlist_other,.songlist_album,.songlist_number,.songlist_songname,.songlist_artist,.songlist_time {
+    line-height: 50px;
+    height: 50px;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.songlist_number {
+    left: 36px;
+    color: inherit;
+    text-align: right;
+    position: absolute;
+    top: 0;
+    width: 20px
+}
+
+.songlist_songname_text {
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 8px;
+    white-space: nowrap;
+    font-size: 16px;
+    max-width: 85%;
+    box-sizing: border-box;
+}
+
+.mod_list_menu {
+    position: absolute;
+    right: -10px;
+    right: -9999px\9;
+    top: 7px;
+    overflow: hidden;
+    opacity: 1;
+    font-size: 0;
+    height: 36px;
+    display: none;
+}
+
+.list_menu_item {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: top;
+    z-index: auto;
+}
+.lmi_play, .lmi_add, .lmi_download, .lmi_delete, .lmi_share {
+    display: block;
+    width: 36px;
+    height: 36px;
+    font-size: 36px;
+    line-height: 36px;
+}
+
+.icon_txt {
+    font: 0/0 a;
+}
+
+.songlist_delete {
+    position: absolute;
+    top: 50%;
+    right: 52px;
+    margin-top: -18px;
+    width: 36px;
+    height: 36px;
+    display: none;
+}
+
+.mod_song_info {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 340px;
+    height: 100%;
+    text-align: center;
+    font-size: 14px;
+    line-height: 24px;
+    /*background: lightgreen;*/
+}
+
+.songinfo_cover {
+    position: relative;
+    display: block;
+    width: 186px;
+    height: 186px;
+    margin: auto;
+}
+
+.songinfo_picture {
+    vertical-align: middle;
+    width: 186px;
+    height: 186px;
+}
+
+.songinfo_lyric {
+    top: 320px;
+    bottom: 50px;
+    width: 100%;
+    -webkit-mask-image: linear-gradient(180deg,hsla(0,0%,100%,0) 0,hsla(0,0%,100%,.6) 15%,#fff 25%,#fff 75%,hsla(0,0%,100%,.6) 85%,hsla(0,0%,100%,0));
+}
+
+.songinfo_lyric, .songinfo_lyric_box {
+    position: absolute;
+    left: 0;
+    overflow: hidden;
+}
+
+.songinfo_lyric_box {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    cursor: move;
+    cursor: grab;
+    cursor: -webkit-grab;
+    margin-right: -30px;
+    overflow-y: auto;
+}
+
+.song_info_lyric_inner {
+    margin-right: 30px;
+    line-height: 34px;
+    transition: transform .1s ease-out 0s;
+}
+
+.player_ft {
+    bottom: 0;
+    left: 0;
+    height: 11%;
+    position: absolute;
+    width: 100%;
+}
+
+.btn_big_previous{
+    position: absolute;
+    top: 4px;
+    left: 0;
+}
+
+.btn_big_play {
+    position: absolute;
+    top: 4px;
+    left: 65px;
+}
+
+.btn_big_next {
+    position: absolute;
+    top: 4px;
+    left: 132px;
+}
+
+.player_ft a .iconfont {
+    font-size: 36px;
+}
+
+.player_music {
+    position: relative;
+    margin: 0 448px 0 208px;
+    top: 11px;
+}
+
+.player_music_info {
+    padding-right: 90px;
+    overflow: hidden;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+.player_music_time {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.player_music_progress {
+    padding-top: 6px;
+    height: 8px;
+    cursor: pointer;
+}
+
+.music_progress_inner {
+    position: relative;
+    height: 2px;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled="true",startColorstr="#19FFFFFF",endColorstr="#19FFFFFF");
+    background: hsla(0,0%,100%,.1);
+}
+
+.music_progress_load {
+    height: 2px;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled="true",startColorstr="#33FFFFFF",endColorstr="#33FFFFFF");
+    background: hsla(0,0%,100%,.2);
+}
+
+.music_progress_play {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2px;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled="true",startColorstr="#B2FFFFFF",endColorstr="#B2FFFFFF");
+    background: hsla(0,0%,100%,.7);
+    pointer-events: none;
+}
+
+
+.music_progress_dot {
+    position: absolute;
+    top: -7px;
+    right: -4px;
+    font-size: 10px;
+    opacity: 1;
+    filter: none;
+}
+
+.btn_big_style_order,.btn_big_style_list,
+.btn_big_style_single,.btn_big_style_random{
+    position: absolute;
+    top: 4px;
+    right: 378px;
+}
+
+.bbso_iconfont {
+    font-size: 36px;
+    cursor: pointer;
+}
+
+.btn_big_like {
+    position: absolute;
+    top: 4px;
+    right: 330px;
+}
+
+.btn_big_down {
+    position: absolute;
+    top: 4px;
+    right: 286px;
+}
+
+.player_progress {
+    padding-top: 6px;
+    height: 8px;
+    cursor: pointer;
+}
+
+.player_voice {
+    position: absolute;
+    top: 13px;
+    right: 83px;
+    width: 80px;
+    padding-top: 13px;
+}
+
+.btn_big_voice {
+    position: absolute;
+    top: -11px;
+    left: -51px;
+}
+
+.player_progress_inner {
+    position: relative;
+    height: 2px;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled="true",startColorstr="#19FFFFFF",endColorstr="#19FFFFFF");
+    background: hsla(0,0%,100%,.1);
+}
+
+.player_progress_play {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2px;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled="true",startColorstr="#B2FFFFFF",endColorstr="#B2FFFFFF");
+    background: hsla(0,0%,100%,.7);
+}
+
+.player_progress_dot {
+    top: -4px;
+    right: -4px;
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+    filter: none;
+}
+
+.player_progress_inner .music_progress_play {
+    width: 100%;
+}

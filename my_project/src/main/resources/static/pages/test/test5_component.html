@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue路由</title>
+    <script src="../../js/vue.js"></script>
+    <script src="../../js/axios-0.24.0.js"></script>
+    <script src="../../js/jquery.min.js"></script>
+    <!--    <script src="https://unpkg.com/vue-router@3.0.0/dist/vue-router.js"></script>-->
+</head>
+<body>
+
+<div id="exp">
+    <component v-bind:is="currentTabComponent" :posts="posts"></component>
+</div>
+
+</body>
+<script>
+    Vue.component('posts-component', {
+        props: ['posts'],
+        template: '' +
+            '<div>\n' +
+            '            <ul>\n' +
+            '                <li v-for="post in posts">\n' +
+            '                {{ post.title }}\n' +
+            '                </li>\n' +
+            '            </ul>\n' +
+            '        </div>'
+    });
+
+    let app = new Vue({
+        el: '#exp',
+        data: {
+            tabs: [
+                {name: 'Posts', id: 1},
+                {name: 'Archive', id: 2}
+            ],
+            chose: 'Posts',
+            posts: [
+                {title: 'Cat Ipsum', content: 'fuck'},
+                {title: 'Hipster Ipsum', content: 'fuck2'},
+                {title: 'Cupcake Ipsum', content: 'fuck3'}
+            ],
+            currentPost: null,
+
+        },
+        computed: {
+            currentTabComponent() {
+                return this.chose.toLowerCase() + '-component';
+            },
+        }
+
+    });
+
+</script>
+</html>

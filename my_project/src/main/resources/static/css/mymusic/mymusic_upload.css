@@ -1,0 +1,203 @@
+
+.mod_songlist {
+    font-size: 16px;
+    overflow: hidden;
+    display: none;
+}
+
+.songlist_header {
+    height: 50px;
+    line-height: 50px;
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #999;
+}
+
+.songlist_list li:nth-child(odd) {
+    background: #F5FAFF;
+}
+
+.songlist_header, .songlist_item {
+    position: relative;
+    padding-left: 46px;
+    padding-right: 94px;
+}
+
+.songlist_header_name, .songlist_songname {
+    float: left;
+    width: 47%;
+    position: relative;
+    white-space: nowrap;
+}
+
+.songlist_header_author, .songlist_header_album,
+.songlist_artist, .songlist_album {
+    float: left;
+    width: 25%;
+    padding-left: 15px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.songlist_header_time, .songlist_time_ {
+    position: absolute;
+    top: 0;
+    right: 36px;
+    width: 50px;
+}
+
+.songlist_item {
+    clear: both;
+    font-size: 0;
+    overflow: hidden;
+}
+
+.songlist_number, .songlist_songname, .songlist_artist,
+.songlist_album, .songlist_time_ {
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 16px;
+}
+
+.songlist_number {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    color: #999;
+    width: 36px;
+}
+
+.songlist_songname_txt {
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 56%;
+    margin-right: 8px;
+    white-space: nowrap;
+    font-size: 16px;
+}
+
+.songlist_songname_txt a:hover {
+    color: lightskyblue;
+}
+
+.mod_list_menu {
+    position: absolute;
+    right: -10px;
+    top: 7px;
+    overflow: hidden;
+    height: 36px;
+    display: none;
+}
+
+.list_menu_item {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: top;
+    z-index: auto;
+    color: #A2A2A2;
+}
+
+.list_menu_item:hover {
+    color: lightskyblue;
+}
+
+.lmi_play, .lmi_add, .lmi_download, .lmi_delete, .lmi_share {
+    display: block;
+    width: 36px;
+    height: 36px;
+    font-size: 36px;
+    line-height: 36px;
+}
+
+.icon_txt {
+    font: 0/0 a;
+}
+
+.songlist_time_ {
+    color: #999;
+}
+
+.song_upload_list {
+    margin-bottom: 250px;
+}
+
+.upload_form {
+    width: 900px;
+    border: 1px solid #000;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    padding: 10px;
+    position: fixed;
+    top: 100px;
+    background: #fff;
+    margin: 0 auto;
+    display: none;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+input[type=text], select {
+    width: 49%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button[type=button] {
+    width: 130px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type=button]:hover {
+    background-color: #45a049;
+}
+
+input[type=file] {
+    width: 230px;
+    background-color: #00c3ff;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=file]:hover {
+    background-color: #0096cb;
+}
+
+.upload_form_cancel {
+    position: relative;
+    left: 748px;
+}
+
+.upload_btn_confirm {
+    position: relative;
+    left: 515px;
+}
+
+.upload_empty_msg {
+    font-size: xx-large;
+    display: none;
+}

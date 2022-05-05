@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>进度条</title>
+    <script src="../../js/axios-0.24.0.js"></script>
+    <script src="../../js/jquery.min.js"></script>
+    <style>
+        #app {
+            width: 1000px;
+            height: 50px;
+            background: #cccccc;
+            margin: 200px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+</div>
+</body>
+<script>
+    $('#app').click(function (e) {
+        console.log('', e.offsetX);
+        console.log('', e.originalEvent.offsetX);  // 鼠标点击的位置x
+        console.log('总宽：', e.target.offsetWidth);  // div容器总宽度width
+        timeScale = (e.originalEvent.offsetX / e.target.offsetWidth).toPrecision(3);  // 当前时间长度 比 总时间长度
+        console.log('比例：', timeScale);
+        // audio.currentTime = 20;
+    });
+</script>
+</html>

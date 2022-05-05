@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>播放列表</title>
+    <script src="../js/vue.js"></script>
+    <script src="../js/axios-0.24.0.js"></script>
+    <script src="../js/element-ui-index.js"></script>
+    <link rel="stylesheet" href="../css/normalize.css"/>
+    <link rel="stylesheet" href="../css/iconfont.css">
+    <link rel="stylesheet" href="../css/player/player.css">
+    <link rel="stylesheet" href="../css/element-ui-index.css">
+</head>
+<body style="background-color: rgb(255,255,255)">
+<div id="app">
+    <div class="bg_screen_player"></div>
+    <div class="bg_screen"
+         style="display:block; background-color: rgb(255,255,255);"></div>
+    <div class="mod_player_login">
+    </div>
+    <div class="mod_player">
+        <div class="player_bd">
+            <div class="player_content">
+                <div class="mod_songlist_toolbar">
+                    <a class="song_btn song_btn_download">
+                        <span class="iconfont">&#xe6ce;</span>
+                        下载
+                    </a>
+                    <a class="song_btn song_btn_delete">
+                        <span class="iconfont">&#xe601;</span>
+                        删除
+                    </a>
+                    <a class="song_btn song_btn_clear">
+                        <span class="iconfont">&#xe900;</span>
+                        清空列表
+                    </a>
+                </div>
+                <div class="mod_songlist_list msl_main msl_viewport">
+                    <div class="msl_overview">
+                        <div class="mod_songlist">
+                            <ul class="songlist_header">
+                                <li class="songlist_edit">
+                                    <input type="checkbox" class="songlist_checkbox">
+                                </li>
+                                <li class="songlist_header_name">歌曲</li>
+                                <li class="songlist_header_author">歌手</li>
+                                <li class="songlist_header_time">时长</li>
+                            </ul>
+                            <ul class="songlist_list">
+                                <li v-for="(song, index) of songList">
+                                    <div class="songlist_item">
+                                        <div class="songlist_edit">
+                                            <input type="checkbox" class="songlist_checkbox">
+                                        </div>
+                                        <div class="songlist_number">{{index + 1}}</div>
+                                        <div class="songlist_songname">
+                                            <span class="songlist_songname_text">
+                                                <a v-bind:title="song.songname" href="javascript:;">
+                                                    {{song.songname}}
+                                                </a>
+                                            </span>
+                                            <div class="mod_list_menu">
+                                                <a class="list_menu_item list_menu_play" title="播放" v-bind:index="index"
+                                                   v-bind:path="song.path">
+                                                    <span class="iconfont lmi_play">&#xe75d;</span>
+                                                    <span class="icon_txt">播放</span>
+                                                </a>
+                                                <a class="list_menu_item list_menu_add" title="添加到播放列表">
+                                                    <span class="iconfont lmi_add">&#xe7b2;</span>
+                                                    <span class="icon_txt">添加到播放列表</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="songlist_artist">
+                                            <a href="javascript:;" class="playlist_author" v-bind:title="song.singer">{{song.singer}}</a>
+                                        </div>
+                                        <div class="songlist_time">{{song.timelength}}</div>
+                                        <a class="songlist_delete">
+                                            <span class="iconfont lmi_delete">&#xe6fc;</span>
+                                            <span class="icon_txt">删除</span>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="mod_song_info">
+                    <div class="songinfo_info">
+                        <a href="#" class="songinfo_cover">
+                            <img src="" alt="" class="songinfo_picture">
+                        </a>
+                        <div class="songinfo_name">
+                            歌曲名：
+                            <a href="#"></a>
+                        </div>
+                        <div class="songinfo_singer">
+                            歌手：
+                            <a class="playlist_author"></a>
+                        </div>
+                        <div class="songinfo_album">
+                            专辑：
+                            <a href="#"></a>
+                        </div>
+                    </div>
+                    <div class="songinfo_lyric">
+                        <div class="songinfo_lyric_box" id="js_lyric_box">
+                            <div class="song_info_lyric_inner">
+                                <br>
+                                <br>
+                                <br>
+                                <p>未找到歌词</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="player_ft">
+            <a class="btn_big_previous" title="上一首歌">
+                <span class="iconfont">&#xe6d3;</span>
+            </a>
+            <a class="btn_big_play" title="播放">
+                <span class="iconfont">&#xe655;</span>
+                <span class="icon_txt">播放&暂停</span>
+            </a>
+            <a class="btn_big_next" title="下一首歌">
+                <span class="iconfont">&#xe901;</span>
+            </a>
+            <div class="player_music">
+                <div class="player_music_info">
+                    <a href="#" target="_blank"></a>
+                    -
+                    <a class="playlist_author"></a>
+                </div>
+                <div class="player_music_time">
+                    <font>{{ currentTime }}</font>
+                    <font>/</font>
+                    <font>{{ totalTime }}</font>
+                </div>
+                <div class="player_music_progress">
+                    <div class="music_progress_inner">
+                        <div class="music_progress_load"></div>
+                        <div class="music_progress_play">
+                            <span class="iconfont music_progress_dot">&#xe63a;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn_big_style_order" title="列表循环">
+                <span class="iconfont bbso_iconfont">&#xea75;</span>
+            </div>
+            <a data-sid="" class="btn_big_like collect" title="收藏">
+                <span class="iconfont">&#xe631;</span>
+            </a>
+            <a class="btn_big_down" title="下载">
+                <span class="iconfont">&#xe637;</span>
+            </a>
+            <!--            <a class="btn_big_only"></a>-->
+            <!--            <a class="mod_btn_comment btn_comment99"></a>-->
+            <div class="player_progress player_voice" title="音量">
+                <a class="btn_big_voice">
+                    <span class="iconfont">&#xe672;</span>
+                </a>
+                <div class="player_progress_inner">
+                    <div class="music_progress_inner">
+                        <div class="music_progress_play">
+                            <span class="iconfont music_progress_dot">&#xe63a;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<audio id="myaudio" src="" preload>
+    您的浏览器不支持 audio 元素。
+</audio>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/player/player.js"></script>
+</body>
+</html>

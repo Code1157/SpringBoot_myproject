@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>vue.js</title>
+    <!--    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>-->
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" name="" value="" placeholder="在这里输入文字，下面会跟着变化" v-model="message">
+    <hr>
+    <p>{{ message1 }}</p>
+    <span :title="data01">{{ data01 }}</span>
+    <br>
+    <span v-if="view">可见</span>
+    <br>
+    <ol>
+        <li v-for="u in us">
+            {{ u.txt }}
+        </li>
+    </ol>
+    <br>
+    <button v-on:click="reverseMsg">反转字符串</button>
+    <br>
+    <input type="text" v-model="userInput">
+    <p>{{ userInput }}</p>
+    <hr>
+    <ol>
+        <todo-item
+                v-for="item in groceryList"
+                v-bind:todo="item"
+                v-bind:key="item.id"
+        ></todo-item>
+    </ol>
+</div>
+<script type="text/javascript">
+    Vue.component('todo-item', {
+        props: ['todo'],
+        template: '<li>{{ todo.text }}</li>'
+    });
+
+    var test = '测试1';
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!',
+            message1: test,
+            data01: '鼠标悬停查看信息' + new Date().toLocaleDateString(),
+            view: true,
+            us: [
+                {txt: 'aaa'},
+                {txt: 'bbb'},
+                {txt: 'ccc'}
+            ],
+            userInput: '',
+            groceryList: [
+                {id: 0, text: '蔬菜'},
+                {id: 1, text: '奶酪'},
+                {id: 2, text: '随便其它什么人吃的东西'}
+            ]
+        },
+        methods: {
+            reverseMsg: function () {
+                this.data01 = this.data01.split('').reverse().join('')
+            }
+        }
+    });
+</script>
+</body>
+</html>

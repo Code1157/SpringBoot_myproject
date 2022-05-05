@@ -1,0 +1,251 @@
+.container {
+    z-index: 2;
+}
+
+.container, .section_inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.mod_data {
+    position: relative;
+    height: 250px;
+    padding-left: 305px;
+    margin-top: 40px;
+    margin-bottom: 35px;
+}
+
+.data_cover {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 250px;
+}
+
+.data_photo {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.data_cont {
+
+}
+
+.data_cont_name, data_cont_name_txt {
+    overflow: hidden;
+    line-height: 50px;
+}
+
+.data_cont_singer {
+    height: 24px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 90%;
+}
+
+.icon_singer {
+    float: left;
+    width: 16px;
+    height: 16px;
+}
+
+.data_cont_singer_txt {
+    font-size: 16px;
+    color: #333;
+}
+
+.data_cont_info {
+    width: 520px;
+    padding-top: 8px;
+}
+
+.data_cont_info_item:nth-child(odd) {
+    width: 250px;
+}
+
+.data_cont_info_item {
+    float: left;
+    width: 250px;
+    margin-right: 10px;
+    line-height: 27px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 16px;
+}
+
+.data_cont_actions {
+    position: absolute;
+    bottom: 23px;
+    font-size: 0;
+}
+
+.data_cont_actions .mod_btn_blue, .data_cont_actions .mod_btn {
+    min-width: 122px;
+    text-align: center;
+    border-radius: 2px;
+    font-size: 16px;
+    margin-right: 6px;
+    padding: 0 23px;
+    height: 38px;
+    line-height: 38px;
+    display: inline-block;
+    white-space: nowrap;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.mod_btn {
+    border: 1px solid #c9c9c9;
+    color: #000;
+}
+
+.mod_btn_blue {
+    border: 1px solid lightskyblue;
+    background-color: lightskyblue;
+    color: #fff;
+}
+
+.detail_layout {
+    padding-right: 343px;
+}
+
+.detail_layout_main {
+    /*float: left;*/
+    /*width: 100%;*/
+    padding-bottom: 20px;
+}
+
+.mod_songlist {
+    font-size: 16px;
+    overflow: hidden;
+    padding-bottom: 60px;
+}
+
+.songlist_header {
+    height: 50px;
+    line-height: 50px;
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #999;
+}
+
+.songlist_list li:nth-child(odd) {
+    background: #F5FAFF;
+}
+
+.songlist_header, .songlist_item {
+    position: relative;
+    padding-left: 46px;
+    padding-right: 94px;
+}
+
+.songlist_header_name, .songlist_songname {
+    float: left;
+    width: 47%;
+    position: relative;
+    white-space: nowrap;
+}
+
+.songlist_header_author, .songlist_header_album,
+.songlist_artist, .songlist_album {
+    float: left;
+    width: 25%;
+    padding-left: 15px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.songlist_header_time, .songlist_time {
+    position: absolute;
+    top: 0;
+    right: 36px;
+    width: 50px;
+}
+
+.songlist_delete {
+    position: absolute;
+    top: 50%;
+    right: 52px;
+    margin-top: -18px;
+    width: 36px;
+    height: 36px;
+    display: none;
+}
+
+.songlist_item {
+    clear: both;
+    font-size: 0;
+    overflow: hidden;
+}
+
+.songlist_number, .songlist_songname, .songlist_artist,
+.songlist_album, .songlist_time {
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 16px;
+}
+
+.songlist_number {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    color: #999;
+    width: 36px;
+}
+
+.songlist_songname_txt {
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 56%;
+    margin-right: 8px;
+    white-space: nowrap;
+    font-size: 16px;
+}
+
+.songlist_songname_txt a:hover {
+    color: lightskyblue;
+}
+
+.mod_list_menu {
+    position: absolute;
+    right: -10px;
+    top: 7px;
+    overflow: hidden;
+    height: 36px;
+    display: none;
+}
+
+.list_menu_item {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: top;
+    z-index: auto;
+    color: #A2A2A2;
+}
+
+.list_menu_item:hover {
+    color: lightskyblue;
+}
+
+.lmi_play, .lmi_add, .lmi_download, .lmi_delete, .lmi_share {
+    display: block;
+    width: 36px;
+    height: 36px;
+    font-size: 36px;
+    line-height: 36px;
+}
+
+.icon_txt {
+    font: 0/0 a;
+}

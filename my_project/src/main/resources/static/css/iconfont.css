@@ -1,0 +1,25 @@
+
+
+/*@font-face {*/
+/*  font-family: 'iconfont';*/
+/*  src: url('../font/font_albb/iconfont.woff2?t=1640531983275') format('woff2'),*/
+/*       url('../font/font_albb/iconfont.woff?t=1640531983275') format('woff'),*/
+/*       url('../font/font_albb/iconfont.ttf?t=1640531983275') format('truetype');*/
+/*}*/
+
+@font-face {
+    font-family: 'iconfont';  /* Project id 3064189 */
+    src: url('//at.alicdn.com/t/font_3064189_7tyvcynx0uv.woff2?t=1650177102209') format('woff2'),
+    url('//at.alicdn.com/t/font_3064189_7tyvcynx0uv.woff?t=1650177102209') format('woff'),
+    url('//at.alicdn.com/t/font_3064189_7tyvcynx0uv.ttf?t=1650177102209') format('truetype'),
+    url('//at.alicdn.com/t/font_3064189_7tyvcynx0uv.svg?t=1650177102209#iconfont') format('svg');
+}
+
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

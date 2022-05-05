@@ -1,0 +1,107 @@
+{
+  "id": "3064189",
+  "name": "我收藏的font",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "16549959",
+      "name": "add",
+      "font_class": "add1",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
+      "icon_id": "151331",
+      "name": "add",
+      "font_class": "add",
+      "unicode": "e661",
+      "unicode_decimal": 58977
+    },
+    {
+      "icon_id": "354954",
+      "name": "download-fill",
+      "font_class": "downloadfill",
+      "unicode": "e6ce",
+      "unicode_decimal": 59086
+    },
+    {
+      "icon_id": "20559469",
+      "name": "158batch",
+      "font_class": "158batch",
+      "unicode": "e7b1",
+      "unicode_decimal": 59313
+    },
+    {
+      "icon_id": "647455",
+      "name": "播放",
+      "font_class": "bofang1",
+      "unicode": "e653",
+      "unicode_decimal": 58963
+    },
+    {
+      "icon_id": "26770261",
+      "name": "减删除",
+      "font_class": "icon-11",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "9851587",
+      "name": "播放",
+      "font_class": "bofang",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "26770256",
+      "name": "搜索",
+      "font_class": "icon-08",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "826105",
+      "name": "播放次数",
+      "font_class": "bofangcishu",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "26754648",
+      "name": "down",
+      "font_class": "down",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "26754652",
+      "name": "left",
+      "font_class": "left",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "26754654",
+      "name": "right",
+      "font_class": "right",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "26754660",
+      "name": "up",
+      "font_class": "up",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "1488905",
+      "name": "暂停",
+      "font_class": "zanting",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录/注册</title>
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/login/login.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/axios-0.24.0.js"></script>
+</head>
+<body>
+<div id="main">
+    <table class="usertable" width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr class="login_option options">
+            <td colspan="2">
+                <div class="login_nav">
+                    <ul>
+                        <li class="current">
+                            <a href="javascript:;">用户登录</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">注册账户</a>
+                        </li>
+                        <!-- <li>
+                          <a href="javascript:;">找回密码&账号</a>
+                        </li> -->
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr class="login_content login" valign="top">
+            <td class="lc_right">
+                <form id="login_form" name="login_form">
+                    <table class="login_form_table" cellspacing="0" cellpadding="0">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <em class="txt">账号</em>
+                                <input v-model="formData.username" type="text" id="login_username" class="lft_input"
+                                       name="login_username" tabindex="500" placeholder="用户名" autocomplete="off">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <em class="txt">密码</em>
+                                <input v-model="formData.password" type="password" id="login_password" class="lft_input"
+                                       name="login_password" tabindex="501" placeholder="密码" autocomplete="off">
+                            </td>
+                        </tr>
+<!--                        <tr>-->
+<!--                            <td>-->
+<!--                                <label for="cookied" class="remember">-->
+<!--                                    <input type="checkbox" id="cookied" name="cookied" tabindex="502" checked>-->
+<!--                                    下次自动输入用户名和密码-->
+<!--                                </label>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+                        <tr>
+                            <td>
+                                <input v-on:click="userLogin()" type="button" class="submit" name="submitto"
+                                       tabindex="503" value="点击登录">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </td>
+            <td class="lc_right_bg"></td>
+        </tr>
+        <tr class="login_content register" valign="top">
+            <td class="lc_right">
+                <form action="javascript:;" id="register_form" name="register_form" method="post">
+                    <table class="login_form_table" cellspacing="0" cellpadding="0">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <em class="txt">账号<i> *</i></em>
+                                <input v-model="reFormData.username" type="text" id="register_username"
+                                       class="lft_input" name="register_username" tabindex="500" placeholder="用户名"
+                                       autocomplete="off">
+                                <span class="warn_"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <em class="txt">昵称<i> *</i></em>
+                                <input v-model="reFormData.nickname" type="text" id="register_nickname" class="lft_input"
+                                       name="nickname" tabindex="501" placeholder="昵称" autocomplete="off">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <em class="txt">邮箱</em>
+                                <input v-model="reFormData.email" type="text" id="register_email" class="lft_input"
+                                       name="email" tabindex="502" placeholder="邮箱" autocomplete="off">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <em class="txt">密码<i> *</i></em>
+                                <input v-model="reFormData.password"  type="password" id="register_password" class="lft_input" name="register_password"
+                                       tabindex="503" placeholder="密码" autocomplete="off">
+                                <span class="warn_"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <em class="txt">确认密码<i> *</i></em>
+                                <input v-model="ifPossword"  type="password" id="register_repassword" class="lft_input"
+                                       name="register_repassword" tabindex="504" placeholder="确认密码" autocomplete="off">
+                                <span class="warn_"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="protocol" class="remember">
+                                    <input type="checkbox" id="protocol" name="cookied" tabindex="505" checked>
+                                    阅读并同意用户协议
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="button" id="submitto_reg" class="submit off" name="submitto_reg" tabindex="506"
+                                       value="点击注册">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </td>
+            <td class="lc_right_bg"></td>
+        </tr>
+        </tbody>
+    </table>
+    <strong id="tip"></strong>
+</div>
+</body>
+<script src="../js/login/login.js"></script>
+<script>
+</script>
+</html>

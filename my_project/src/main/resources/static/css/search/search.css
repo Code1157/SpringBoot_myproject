@@ -1,0 +1,289 @@
+.container {
+    margin-bottom: 100px;
+}
+
+.mod_search {
+    height: 210px;
+    background: url("http://localhost/images/image/vinyl-music-vintage-1963249-wallhere.com.jpg");
+    background-position-y: center;
+}
+
+.mod_search_frame {
+    position: absolute;
+    height: 40px;
+    line-height: 40px;
+    left: 50%;
+    margin-top: 116px;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+.mod_search input[search-box] {
+    width: 710px;
+    height: 40px;
+    transition: all 0.3s;
+    padding-left: 14px;
+    border: 1px solid #cccccc;
+    outline: none;
+}
+
+.mod_search input[search-box]:focus {
+    outline: 1px solid rgb(0, 132, 214);
+}
+
+.search_icon {
+    position: absolute;
+    width: 40px;
+    font-size: 26px;
+    line-height: 40px;
+    right: 0px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.search_icon:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+
+.mod_playlist {
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* 歌曲、歌单、专辑、视频数量标签 */
+.mod_tab, .mod_tab_item {
+    height: 56px;
+    line-height: 56px;
+}
+
+.mod_tab {
+    position: relative;
+    zoom: 1;
+    border-bottom: 1px solid #f7f7f7;
+    /*margin-bottom: -20px;*/
+    /*overflow: hidden;*/
+}
+
+.mod_tab_item {
+    position: relative;
+    float: left;
+    font-size: 16px;
+    overflow: hidden;
+    margin-right: 55px;
+}
+
+.mod_tab_current, .mod_tab_item:hover {
+    color: lightskyblue;
+}
+
+/* 歌曲工具栏 */
+.mod_songlist_toolbar {
+    padding-top: 50px;
+    position: relative;
+    margin-bottom: 20px;
+    font-size: 0;
+}
+
+.mod_btn {
+    font-size: 16px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    margin-right: 6px;
+    padding: 0 23px;
+    height: 38px;
+    line-height: 38px;
+    display: inline-block;
+    white-space: nowrap;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+    color: #000;
+    border: 1px solid #ccc;
+}
+
+.mod_btn:hover {
+    background: #EDEDED;
+}
+
+.mod_btn:first-child {
+    background: lightskyblue;
+    border: 1px solid lightskyblue;
+    color: #fff;
+}
+
+.mod_btn:first-child:hover {
+    background: #43B9FF;
+}
+
+.mod_songlist {
+    font-size: 16px;
+    overflow: hidden;
+}
+
+.songlist_header {
+    height: 50px;
+    line-height: 50px;
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #999;
+}
+
+.songlist_list li:nth-child(odd) {
+    background: #F5FAFF;
+}
+
+.songlist_header, .songlist_item {
+    position: relative;
+    padding-left: 46px;
+    padding-right: 94px;
+}
+
+.songlist_header_name, .songlist_songname {
+    float: left;
+    width: 47%;
+    position: relative;
+    white-space: nowrap;
+}
+
+.songlist_header_author, .songlist_header_album,
+.songlist_artist, .songlist_album {
+    float: left;
+    width: 25%;
+    padding-left: 15px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.songlist_header_time, .songlist_time_ {
+    position: absolute;
+    top: 0;
+    right: 36px;
+    width: 50px;
+}
+
+.songlist_item {
+    clear: both;
+    font-size: 0;
+    overflow: hidden;
+}
+
+.songlist_number, .songlist_songname, .songlist_artist,
+.songlist_album, .songlist_time_ {
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 16px;
+}
+
+.songlist_number {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    color: #999;
+    width: 36px;
+}
+
+.songlist_songname_txt {
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 56%;
+    margin-right: 8px;
+    white-space: nowrap;
+    font-size: 16px;
+}
+
+.songlist_songname_txt a:hover {
+    color: lightskyblue;
+}
+
+.mod_list_menu {
+    position: absolute;
+    right: -10px;
+    top: 7px;
+    overflow: hidden;
+    height: 36px;
+    display: none;
+}
+
+.list_menu_item {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: top;
+    z-index: auto;
+    color: #A2A2A2;
+}
+
+.list_menu_item:hover {
+    color: lightskyblue;
+}
+
+.lmi_play, .lmi_add, .lmi_download, .lmi_delete, .lmi_share {
+    display: block;
+    width: 36px;
+    height: 36px;
+    font-size: 36px;
+    line-height: 36px;
+}
+
+.icon_txt {
+    font: 0/0 a;
+}
+
+.songlist_time_ {
+    color: #999;
+}
+
+.songlist_delete {
+    position: absolute;
+    top: 50%;
+    right: 52px;
+    margin-top: -18px;
+    width: 36px;
+    height: 36px;
+    display: none;
+}
+
+.search_tip_hidden {
+    display: none;
+}
+
+.search_tip_block {
+    display: block;
+}
+
+.search_tip_none {
+    padding-top: 55px;
+    text-align: center;
+    font-size: 24px;
+    color: #000;
+    line-height: 40px;
+    height: 350px;
+}
+
+.txt_heightlight {
+    color: lightskyblue;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

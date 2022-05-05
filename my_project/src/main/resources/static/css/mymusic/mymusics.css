@@ -1,0 +1,35 @@
+html {
+  overflow-x: hidden;
+}
+
+/* 未登录时的css */
+
+.mod_profile_unlogin {
+  height: 880px;
+  background: url("http://localhost/images/image/70172.jpg") no-repeat;
+  background-position: 0 -200px;
+  overflow: hidden;
+}
+
+.section_inner h1 {
+  color: gray;
+  font-size: 80px;
+  font-weight: lighter;
+  text-align: center;
+  margin-top: 200px;
+}
+
+.unlogin_btn {
+  display: block;
+  font-size: 20px;
+  height: 48px;
+  line-height: 48px;
+  width: 128px;
+  text-align: center;
+  margin: 0 auto;
+  border: 1px solid lightskyblue;
+  background-color: lightskyblue;
+  color: #fff;
+}
+
+/* 登录成功后的css */

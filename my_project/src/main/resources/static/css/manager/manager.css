@@ -1,0 +1,65 @@
+.container {
+    width: 90%;
+    margin: 100px auto;
+}
+
+footer {
+    margin-top: 400px;
+}
+
+th, td {
+    min-width: 90px;
+}
+
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+ol, ul {
+    margin-top: 0;
+    margin-bottom: 0px;
+}
+
+.table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th {
+    max-width: 100px;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.handle h1 {
+    text-align: center;
+}
+
+button {
+    border: 1px solid #9e9e9e;
+    border-radius: 2px;
+}
+
+button:hover {
+    border: 1px solid #0087ff;
+}
+
+.delete_btn {
+    background: #f0a1a8;
+}
+
+.delete_btn:hover {
+    background: #ffe6e3;
+}
+
+.pass_btn {
+    background: #55bb8a;
+}
+
+.pass_btn:hover {
+    background: #aeffe8;
+}
+
+.clean_btn {
+    background: #cccccc;
+}
+
+.clean_btn:hover {
+    background: #ffffff;
+}

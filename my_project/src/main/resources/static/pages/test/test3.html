@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/vue.js"></script>
+
+</head>
+<body>
+<div id="app">
+    <my-c>
+        <template slot-scope="parent">
+            <h1>Here might be a page title</h1>
+            <h2>{{parent.detail.name}}</h2>
+            <h2>{{parent.detail.love}}</h2>
+        </template>
+    </my-c>
+</div>
+</body>
+<script>
+    Vue.component('myC',{
+        template: '<div>Hello!<slot v-bind:detail="detail">' +
+            '</slot></div>',
+        // template: '<div>Hello!<slot v-bind:detail="detail" name="test"></slot></div>',
+        data: function () {
+            return {
+                detail: {
+                    name: '李',
+                    love: 'coding'
+                }
+            }
+        }
+    });
+    new Vue({
+        el: '#app'
+    })
+</script>
+</html>

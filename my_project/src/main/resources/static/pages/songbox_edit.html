@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>编辑歌单</title>
+    <link rel="stylesheet" href="../css/normalize.css"/>
+    <link rel="stylesheet" href="../css/iconfont.css">
+    <link rel="stylesheet" href="../css/header.css"/>
+    <link rel="stylesheet" href="../css/footer.css"/>
+    <script src="../js/vue.js"></script>
+    <script src="../js/axios-0.24.0.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/mymusic/songbox_edit.css"/>
+</head>
+<body>
+<div id="app">
+    <div class="wrap">
+        <header class="header" id="header">
+            <div class="header_content">
+                <div class="header_content_top">
+                    <h1>
+                        <a href="http://localhost/pages/index.html">
+                            <img src="http://localhost/images/logo/logo5.png" alt=""/>
+                        </a>
+                    </h1>
+                    <ul>
+                        <li class="concert_hall">音乐厅</li>
+                        <li class="my_musics selected_li">我的音乐</li>
+                    </ul>
+                    <div class="mod_top_login">
+                        <a href="javascript:;">登录</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <div id="edit_form">
+                <h1 class="page_tit">编辑歌单</h1>
+                <label>歌单名称<span>*</span></label>
+                <input type="text" placeholder="输入歌单名称" v-model="songbox.title">
+                <label>简介</label>
+                <input type="text" placeholder="歌单描述" v-model="songbox.detail">
+                <label>封面/预览</label>
+                <div class="upload_cover">
+                    <div class="preview_box">
+                        <img id="preview_pic" class="preview_pic" src="" alt="封面">
+                    </div>
+                    <input accept="image/png,image/gif,image/jpeg,image/jpg" type="file" class="file" id="file"
+                           value="上传封面">
+                </div>
+                <div class="upload_btn">
+                    <button class="songbox_edit_btn">完成</button>
+                    <button class="songbox_delete_btn">删除歌单</button>
+                </div>
+            </div>
+        </div>
+        <footer class="footer"></footer>
+        <div class="copyright"></div>
+        <strong id="tip"></strong>
+    </div>
+</div>
+</body>
+<script src="../js/header.js"></script>
+<script src="../js/mymusic/songbox_edit.js"></script>
+<script>
+
+</script>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuhua.plus.dao.SongBoxDao">
+    <select id="querySongBoxList" resultType="com.yuhua.plus.domain.Song">
+        SELECT
+            s.*
+        FROM
+            `songbox` sb
+            left join songbox_song sbs on sb.id = sbs.songbox_id
+            left join song s on sbs.song_id = s.id
+        where sb.id = #{songboxId}
+    </select>
+    <select id="querySongBoxListByUid" resultType="com.yuhua.plus.domain.Song">
+        SELECT
+            s.*
+        FROM
+            `songbox` sb
+            left join songbox_song sbs on sb.id = sbs.songbox_id
+            left join song s on sbs.song_id = s.id
+        where sb.creater_id = #{uid} and sb.id = #{songboxId}
+    </select>
+    <select id="getDefaltSongBoxId" resultType="java.lang.Long">
+        SELECT
+            sb.id
+        FROM
+            `songbox` sb
+        where creater_id = #{uid} and is_default = 1
+    </select>
+    <select id="querySongBox_SongList" resultType="com.yuhua.plus.domain.SongBox_Song">
+        SELECT
+            sbs.*
+        FROM
+            `songbox` sb
+            LEFT JOIN songbox_song sbs on sbs.songbox_id = sb.id
+        where sb.id = #{songboxId} and sb.creater_id = #{uid}
+    </select>
+</mapper>

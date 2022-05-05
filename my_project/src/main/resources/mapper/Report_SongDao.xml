@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuhua.plus.dao.Report_SongDao">
+    <select id="queryReportSongInfo" resultType="com.yuhua.plus.controller.utils.ReportSongInfo">
+		SELECT
+			u.username whistleblower,rs.reason,u2.username uploader,s.*
+		FROM
+			`report_song` rs
+			left join upload_song us on rs.song_id = us.song_id
+			left join user u on rs.user_id = u.id
+			left join user u2 on us.user_id = u2.id
+			left join song s on rs.song_id = s.id
+		order by rs.report_time asc
+    </select>
+</mapper>

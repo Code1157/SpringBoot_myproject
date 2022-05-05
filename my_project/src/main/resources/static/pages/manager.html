@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>事件管理</title>
+    <!--[if lt IE 9]>
+    <script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="http://localhost/css/normalize.css"/>
+    <link rel="stylesheet" href="http://localhost/css/iconfont.css">
+    <link rel="stylesheet" href="http://localhost/css/header.css"/>
+    <link rel="stylesheet" href="http://localhost/css/footer.css"/>
+    <script src="../js/vue.js"></script>
+    <script src="../js/axios-0.24.0.js"></script>
+    <!--Font Awesome-->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!--jQuery-->
+    <script src="../js/jquery.min.js"></script>
+    <!--ssMenu CSS-->
+    <link rel="stylesheet" href="../css/bootstrap/ss-menu.css">
+    <!--        <link href="../css/bootstrap/bootstrap.min.css" rel="stylesheet">-->
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../js/bootstrap/bootstrap.min.js"></script>
+    <script src="../js/bootstrap/raydreams.js"></script>
+    <link rel="stylesheet" href="http://localhost/css/manager/manager.css"/>
+</head>
+
+<body>
+<div id="app">
+    <div class="wrap">
+        <header class="header" id="header">
+            <div class="header_content">
+                <div class="header_content_top">
+                    <h1>
+                        <a href="http://localhost/pages/index.html">
+                            <img src="http://localhost/images/logo/logo5.png" alt=""/>
+                        </a>
+                    </h1>
+                    <ul>
+                        <li class="concert_hall selected_li">音乐厅</li>
+                        <li class="my_musics">我的音乐</li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <!--Start Side Sticky Menu-->
+            <nav class="ss-menu ">
+                <ul>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <li class="manageSong"><a href="javascript:;" @click.prevent="current_info='userupload'"> <span
+                            class="ss-badge">{{itemCount}}</span><i class="fa fa-music"></i>
+                        用户上传的音乐 </a></li>
+                    <li><a href="javascript:;" @click.prevent="current_info='report'">&nbsp;&nbsp;<i class="fa fa-exclamation"></i>&nbsp;被举报的音乐</a></li>
+                    <li><a href="javascript:;" @click.prevent="current_info='pass'"><i class="fa fa-check"></i>已通过的上传</a></li>
+                </ul>
+            </nav>
+            <component v-bind:is="current_info" v-bind:uploadinfo="uploadinfo" v-bind:reportmsg="reportmsg" v-bind:passuploadinfo="passuploadinfo"></component>
+        </div>
+        <footer class="footer"></footer>
+        <div class="copyright"></div>
+        <a class="btn_bottom_top" href="javascript:window.scrollTo( 0, 0 );">
+            <span class="iconfont">&#xe61c;</span>
+        </a>
+    </div>
+</div>
+
+</body>
+<!--ssMenu JS-->
+<script src="../js/bootstrap/jquery.ss.menu.js"></script>
+<script src="../js/bootstrap/bootstable.js"></script>
+<script src="../js/header.js"></script>
+<script src="../js/manager/manager.js"></script>
+<script>
+</script>
+</html>

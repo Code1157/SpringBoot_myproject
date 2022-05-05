@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>音乐厅</title>
+    <!--[if lt IE 9]>
+    <script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="../css/normalize.css"/>
+    <link rel="stylesheet" href="../css/iconfont.css">
+    <link rel="stylesheet" href="../css/header.css"/>
+    <link rel="stylesheet" href="../css/index/index.css"/>
+    <link rel="stylesheet" href="../css/footer.css"/>
+    <script src="../js/vue.js"></script>
+    <script src="../js/axios-0.24.0.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery.transit/0.9.12/jquery.transit.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <div class="wrap">
+        <header class="header" id="header">
+            <div class="header_content">
+                <div class="header_content_top">
+                    <h1>
+                        <a href="http://localhost/pages/index.html">
+                            <img src="http://localhost/images/logo/logo5.png" alt=""/>
+                        </a>
+                    </h1>
+                    <ul>
+                        <li class="concert_hall selected_li">音乐厅</li>
+                        <li class="my_musics">我的音乐</li>
+                    </ul>
+                </div>
+                <div class="header_content_bottom">
+                    <ul>
+                        <li class="selected_header_bottom">
+                            <a href="javascript:;">首页</a>
+                        </li>
+                        <li><a href="javascript:;">歌手</a></li>
+                        <li><a href="javascript:;">新歌</a></li>
+                        <li><a href="javascript:;">专辑</a></li>
+                        <li><a href="javascript:;">排行榜</a></li>
+                        <li>
+                            <a href="javascript:;">分类歌单</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">MV</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">音游</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <div class="search">
+                <div>
+                    <span class="iconfont">&#xe600;</span>
+                    <input type="text" class="search_ip1" name="search" maxlength="600" placeholder="搜索音乐"
+                           autocomplete="off"
+                           search-box/>
+                </div>
+                <input type="button" value="搜索" search-buttom>
+            </div>
+            <div class="recommend">
+                <div class="rec_nav">
+                    <h3 class="rec_nav_title">歌单推荐</h3>
+                    <div>
+                        <a href="javascript:;" class="rec_active">每日推荐</a>
+                        <a href="javascript:;">热门</a>
+                        <a href="javascript:;">网络歌曲</a>
+                        <a href="javascript:;">经典</a>
+                    </div>
+                    <!--            <a href="javascript:;">更多<span class="iconfont">&#xe61b;</span></a>-->
+                </div>
+                <div class="rec_list" id="rec_list">
+                    <div v-for="(songbox, index) of recSongBoxList" class="rec_list_item">
+                        <div class="rec_list_item_cover">
+                            <a v-bind:href="url_songbox(songbox.id)">
+                                <div class="screen">
+                                    <span class="iconfont">&#xe610;</span>
+                                </div>
+                                <img v-bind:src="songbox.cover" alt="">
+                            </a>
+                        </div>
+                        <p class="rec_item_introduction"><a v-bind:href="url_songbox(songbox.id)">{{songbox.title}}</a>
+                        </p>
+                        <p class="rec_item_count"><span class="iconfont">&#xe60b;&nbsp;</span>{{songbox.playCount}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="newsong" id="newsong">
+                <div class="ns_nav">
+                    <h3 class="ns_nav_title">新歌放送</h3>
+                    <div>
+                        <a href="javascript:;" class="ns_active">最新</a>
+                    </div>
+                </div>
+                <div class="ns_list">
+                    <div class="ns_list_boxs">
+                        <ul>
+                            <li v-for="(song, index) of newSongList">
+                                <div class="ns_list_boxs2">
+                                    <div class="ns_list_boxs_cover">
+                                        <a href="javascript:;" v-bind:sid="song.id">
+                                            <div class="nlbc_screen">
+                                                <span class="iconfont">&#xe60c;</span>
+                                            </div>
+                                            <img v-bind:src="song.cover" v-bind:alt="song.album">
+                                        </a>
+                                    </div>
+                                    <div class="ns_list_boxs_detail">
+                                        <h3>
+                                            <a v-bind:href="url(song.id)" v-bind:sid="song.id">{{song.songname}}</a>
+                                        </h3>
+                                        <p class="detail_author">{{song.singer}}</p>
+                                    </div>
+                                    <div class="song_time">{{song.timelength}}</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="leaderboard">
+                <div class="lb_nav">
+                    <h3 class="lb_nav_title">排行榜</h3>
+                    <div>
+                        <!--              <a href="javascript:;" class="lb_active">更多<span class="iconfont">&#xe61b;</span>-->
+                        </a>
+                    </div>
+                </div>
+                <div class="lb_list">
+                    <ul>
+                        <li class="lb_list_item">
+                            <div class="lb_list_item_box">
+                                <div class="llib_bg"></div>
+                                <span class="llib_icon_play iconfont">&#xe653;</span>
+                                <span class="llib_line iconfont">&#xe601;</span>
+                                <h3 class="lb_list_item_hand">
+                                    <div>每周榜</div>
+                                    <a href="javascript:;" class="llih_title">热歌</a>
+                                </h3>
+                                <ul class="lb_list_item_songlist">
+                                    <li class="llis_song">
+                                        <div class="llis_song_number">1</div>
+                                        <div class="llis_song_name">
+                                            <a href="javascript:;">悟空</a>
+                                        </div>
+                                        <div class="llis_song_artist">
+                                            <a href="javascript:;">戴荃</a>
+                                        </div>
+                                    </li>
+                                    <li class="llis_song">
+                                        <div class="llis_song_number">2</div>
+                                        <div class="llis_song_name">
+                                            <a href="javascript:;">悟空</a>
+                                        </div>
+                                        <div class="llis_song_artist">
+                                            <a href="javascript:;">戴荃</a>
+                                        </div>
+                                    </li>
+                                    <li class="llis_song">
+                                        <div class="llis_song_number">3</div>
+                                        <div class="llis_song_name">
+                                            <a href="javascript:;">悟空</a>
+                                        </div>
+                                        <div class="llis_song_artist">
+                                            <a href="javascript:;">戴荃</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="lb_list_item">
+                            <div class="lb_list_item_box">
+                                <div class="llib_bg"></div>
+                                <span class="llib_icon_play iconfont">&#xe653;</span>
+                                <span class="llib_line iconfont">&#xe601;</span>
+                                <h3 class="lb_list_item_hand">
+                                    <div>每周榜</div>
+                                    <a href="javascript:;" class="llih_title">热歌</a>
+                                </h3>
+                                <ul class="lb_list_item_songlist">
+                                    <li class="llis_song">
+                                        <div class="llis_song_number">1</div>
+                                        <div class="llis_song_name">
+                                            <a href="javascript:;">悟空</a>
+                                        </div>
+                                        <div class="llis_song_artist">
+                                            <a href="javascript:;">戴荃</a>
+                                        </div>
+                                    </li>
+                                    <li class="llis_song">
+                                        <div class="llis_song_number">2</div>
+                                        <div class="llis_song_name">
+                                            <a href="javascript:;">悟空</a>
+                                        </div>
+                                        <div class="llis_song_artist">
+                                            <a href="javascript:;">戴荃</a>
+                                        </div>
+                                    </li>
+                                    <li class="llis_song">
+                                        <div class="llis_song_number">3</div>
+                                        <div class="llis_song_name">
+                                            <a href="javascript:;">悟空</a>
+                                        </div>
+                                        <div class="llis_song_artist">
+                                            <a href="javascript:;">戴荃</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="lb_list_item">
+                            <div class="lb_list_item_box">
+                                <div class="llib_bg"></div>
+                                <span class="llib_icon_play iconfont">&#xe653;</span>
+                                <span class="llib_line iconfont">&#xe601;</span>
+                                <h3 class="lb_list_item_hand">
+                                    <div>每周榜</div>
+                                    <a href="javascript:;" class="llih_title">热歌</a>
+                                </h3>
+                                <ul class="lb_list_item_songlist">
+                                    <li class="llis_song">
+                                        <div class="llis_song_number">1</div>
+                                        <div class="llis_song_name">
+                                            <a href="javascript:;">悟空</a>
+                                        </div>
+                                        <div class="llis_song_artist">
+                                            <a href="javascript:;">戴荃</a>
+                                        </div>
+                                    </li>
+                                    <li class="llis_song">
+                                        <div class="llis_song_number">2</div>
+                                        <div class="llis_song_name">
+                                            <a href="javascript:;">悟空</a>
+                                        </div>
+                                        <div class="llis_song_artist">
+                                            <a href="javascript:;">戴荃</a>
+                                        </div>
+                                    </li>
+                                    <li class="llis_song">
+                                        <div class="llis_song_number">3</div>
+                                        <div class="llis_song_name">
+                                            <a href="javascript:;">悟空</a>
+                                        </div>
+                                        <div class="llis_song_artist">
+                                            <a href="javascript:;">戴荃</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="lb_list_item">
+                            <div class="lb_list_item_box">
+                                <div class="llib_bg"></div>
+                                <span class="llib_icon_play iconfont">&#xe653;</span>
+                                <span class="llib_line iconfont">&#xe601;</span>
+                                <h3 class="lb_list_item_hand">
+                                    <div>每周榜</div>
+                                    <a href="javascript:;" class="llih_title">热歌</a>
+                                </h3>
+                                <ul class="lb_list_item_songlist">
+                                    <li class="llis_song">
+                                        <div class="llis_song_number">1</div>
+                                        <div class="llis_song_name">
+                                            <a href="javascript:;">悟空</a>
+                                        </div>
+                                        <div class="llis_song_artist">
+                                            <a href="javascript:;">戴荃</a>
+                                        </div>
+                                    </li>
+                                    <li class="llis_song">
+                                        <div class="llis_song_number">2</div>
+                                        <div class="llis_song_name">
+                                            <a href="javascript:;">悟空</a>
+                                        </div>
+                                        <div class="llis_song_artist">
+                                            <a href="javascript:;">戴荃</a>
+                                        </div>
+                                    </li>
+                                    <li class="llis_song">
+                                        <div class="llis_song_number">3</div>
+                                        <div class="llis_song_name">
+                                            <a href="javascript:;">悟空</a>
+                                        </div>
+                                        <div class="llis_song_artist">
+                                            <a href="javascript:;">戴荃</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="lb_list_item">
+                            <div class="lb_list_item_box">
+                                <div class="llib_bg"></div>
+                                <span class="llib_icon_play iconfont">&#xe653;</span>
+                                <span class="llib_line iconfont">&#xe601;</span>
+                                <h3 class="lb_list_item_hand">
+                                    <div>每周榜</div>
+                                    <a href="javascript:;" class="llih_title">热歌</a>
+                                </h3>
+                                <ul class="lb_list_item_songlist">
+                                    <li class="llis_song">
+                                        <div class="llis_song_number">1</div>
+                                        <div class="llis_song_name">
+                                            <a href="javascript:;">悟空</a>
+                                        </div>
+                                        <div class="llis_song_artist">
+                                            <a href="javascript:;">戴荃</a>
+                                        </div>
+                                    </li>
+                                    <li class="llis_song">
+                                        <div class="llis_song_number">2</div>
+                                        <div class="llis_song_name">
+                                            <a href="javascript:;">悟空</a>
+                                        </div>
+                                        <div class="llis_song_artist">
+                                            <a href="javascript:;">戴荃</a>
+                                        </div>
+                                    </li>
+                                    <li class="llis_song">
+                                        <div class="llis_song_number">3</div>
+                                        <div class="llis_song_name">
+                                            <a href="javascript:;">悟空</a>
+                                        </div>
+                                        <div class="llis_song_artist">
+                                            <a href="javascript:;">戴荃</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <footer class="footer"></footer>
+        <div class="copyright"></div>
+        <a class="btn_bottom_top" href="javascript:window.scrollTo( 0, 0 );">
+            <span class="iconfont">&#xe61c;</span>
+        </a>
+    </div>
+</div>
+</body>
+<script>
+    console.log(localStorage.getItem('token'));
+    console.log(localStorage.getItem('username'));
+    console.log(localStorage.getItem('avatar'));
+    console.log(localStorage.getItem('nickname'));
+</script>
+<script src="../js/header.js"></script>
+<script src="../js/index/index.js"></script>
+
+</html>

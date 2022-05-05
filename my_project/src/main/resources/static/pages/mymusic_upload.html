@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>我的音乐</title>
+    <!--[if lt IE 9]>
+    <script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="../css/normalize.css"/>
+    <link rel="stylesheet" href="../css/iconfont.css">
+    <link rel="stylesheet" href="../css/header.css"/>
+    <link rel="stylesheet" href="../css/mymusic/mymusics_logined.css"/>
+    <link rel="stylesheet" href="../css/footer.css"/>
+    <script src="../js/vue.js"></script>
+    <script src="../js/axios-0.24.0.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery.transit/0.9.12/jquery.transit.js"></script>
+    <link rel="stylesheet" href="../css/mymusic/mymusic_upload.css"/>
+</head>
+
+<body>
+<div id="app">
+    <div class="wrap">
+        <header class="header" id="header">
+            <div class="header_content">
+                <div class="header_content_top">
+                    <h1>
+                        <a href="http://localhost/pages/index.html">
+                            <img src="http://localhost/images/logo/logo5.png" alt=""/>
+                        </a>
+                    </h1>
+                    <ul>
+                        <li class="concert_hall">音乐厅</li>
+                        <li class="my_musics selected_li">我的音乐</li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <div class="mod_profile">
+                <div class="section_inner">
+                    <div class="profile_avatar_link">
+                        <img alt="头像" class="profile_avatar">
+                    </div>
+                    <h1 class="profile_title">
+                        <span class="profile_name"></span>
+                    </h1>
+                    <ul class="mod_user_statistic">
+                        <li class="user_statistic_item">
+                            <a href="javascript:;">
+                                <stong>100</stong>
+                                <span>关注</span>
+                            </a>
+                        </li>
+                        <li class="user_statistic_item">
+                            <a href="javascript:;">
+                                <stong>0</stong>
+                                <span>粉丝</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="section_inner_screen"></div>
+                </div>
+            </div>
+            <div class="mod_playlist">
+                <div class="profile_nav" id="nav">
+                    <a href="javascript:;" class="nav_tab">我的音乐</a>
+                    <a href="javascript:;" class="nav_tab">我的歌单</a>
+                    <a href="javascript:;" class="nav_tab">我的关注</a>
+                    <a href="javascript:;" class="nav_tab">我的粉丝</a>
+                    <a href="javascript:;" class="nav_tab nav_tab_current">我上传的音乐</a>
+                </div>
+                <div id="song_upload_list" class="song_upload_list" style="display: block">
+                    <div class="upload_toolbar">
+                        <button type="button" class="mod_btn upload_btn_show" @click="formCreate()">上传音乐</button>
+                    </div>
+                    <div class="mod_songlist" id="songshow">
+                        <ul class="songlist_header">
+                            <li class="songlist_header_name">歌曲</li>
+                            <li class="songlist_header_author">歌手</li>
+                            <li class="songlist_header_album">专辑</li>
+                            <li class="songlist_header_time">时长</li>
+                        </ul>
+                        <ul class="songlist_list">
+                            <li v-for="(song, index) of songList">
+                                <div class="songlist_item ">
+                                    <div class="songlist_number">{{index + 1}}</div>
+                                    <div class="songlist_songname">
+                                        <span class="songlist_songname_txt">
+                                            <a v-bind:href="url(song.id)">{{song.songname}}</a>
+                                        </span>
+                                        <div class="mod_list_menu">
+                                            <a class="list_menu_item list_menu_play" title="播放"
+                                               v-bind:sid="song.id">
+                                                <span class="iconfont lmi_play">&#xe75d;</span>
+                                                <span class="icon_txt">播放</span>
+                                            </a>
+                                            <a class="list_menu_item list_menu_add" title="添加到播放列表"
+                                               v-bind:sid="song.id">
+                                                <span class="iconfont lmi_add">&#xe7b2;</span>
+                                                <span class="icon_txt">添加到播放列表</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="songlist_artist">
+                                        <a href="javascript:;" class="playlist__author">{{song.singer}}</a>
+                                    </div>
+                                    <div class="songlist_album">
+                                        <a href="javascript:;">{{song.album}}</a>
+                                    </div>
+                                    <div class="songlist_time_">{{song.timelength}}</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="upload_form">
+                        <button type="button" class="upload_form_cancel" @click="formClose()">
+                            <span class="iconfont">取消</span>
+                        </button>
+                        <form>
+                            <input type="text" id="songname" v-model="songDetail.songname" placeholder="歌曲名*">
+                            <input type="text" id="singer" v-model="songDetail.singer" placeholder="歌手*">
+                            <input type="text" id="album" v-model="songDetail.album" placeholder="专辑名">
+                            <input type="text" id="tag" v-model="songDetail.tag" placeholder="标签（如轻音乐）">
+                            <input type="text" id="language" v-model="songDetail.language" placeholder="语种">
+                            <input type="text" id="sect" v-model="songDetail.sect" placeholder="派别">
+                            <input type="text" id="copyright" v-model="songDetail.copyright" placeholder="版权">
+                            <!--                            <input type="text" id="publictime" v-model="songDetail.publishTime" placeholder="发行时间">-->
+                        </form>
+                        <input type="file" name="file" class="file" id="file">
+                        <button type="button" class="upload_btn_confirm">点击上传</button>
+                    </div>
+                    <div class="upload_empty_msg">
+                        <span>您还没有上传过音乐</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer"></footer>
+        <div class="copyright"></div>
+        <a class="btn_bottom_top" href="javascript:window.scrollTo( 0, 0 );">
+            <span class="iconfont">&#xe61c;</span>
+        </a>
+        <strong id="tip"></strong>
+    </div>
+</div>
+<div id="popupbox">
+    <div class="mod_operate_menu">
+        <div class="operate_menu_cont">
+            <ul class="operate_menu_list operate_menu_top_line operate_menu_bottom_line">
+                <li v-for="songbox of songBoxList" class="operate_menu_item">
+                    <a class="operate_menu_link" v-bind:songboxid="songbox.id">{{songbox.title}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<audio id="audio" controls="" style="display: none;"></audio>
+</body>
+<script src="../js/header.js"></script>
+<script src="../js/mymusic/mymusic_url.js"></script>
+<script src="../js/mymusic/mymusic_upload.js"></script>
+<!--<script src="../js/mymusic/mymusic_songlist.js"></script>-->
+<script>
+</script>
+</html>

@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+em,
+i {
+    font-style: normal;
+}
+
+li {
+    list-style: none
+}
+
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: #666;
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button,
+input {
+    font-family: Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, \\5B8B\4F53, sans-serif;
+}
+
+input {
+}
+
+body, html {
+    -webkit-font-smoothing: antialiased;
+    /* background: #F3F3F3; */
+    font: 14px/1.5 Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, \\5B8B\4F53, sans-serif;
+    color: #666;
+    scroll-behavior: smooth;
+}
+
+body ::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+body ::-webkit-scrollbar-thumb {
+    background-color: #ddd;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.hide,
+.none {
+    display: none;
+}
+
+.clearfix:after {
+    visibility: hidden;
+    clear: both;
+    display: block;
+    content: ".";
+    height: 0;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* 头像CSS */
+.top_login_link {
+    height: 90px;
+    width: 38px;
+}
+
+.top_login_avatar {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+}
+
+#tip {
+    position: fixed;
+    top: 10%;
+    right: 40%;
+    display: none;
+    z-index: 9999;
+    min-width: 200px;
+    text-align: center;
+    color: #00c3ff;
+    font-size: 26px;
+    background: rgba(0,0,0,0.4);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}

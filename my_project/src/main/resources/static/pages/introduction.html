@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>介绍</title>
+    <link rel="stylesheet" href="../css/normalize.css"/>
+    <link rel="stylesheet" href="../css/iconfont.css">
+    <link rel="stylesheet" href="../css/header.css"/>
+    <link rel="stylesheet" href="../css/footer.css"/>
+    <script src="../js/vue.js"></script>
+    <script src="../js/axios-0.24.0.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/introduction/introduction.css"/>
+</head>
+<body>
+<div id="app">
+    <div class="wrap">
+        <header class="header" id="header">
+            <div class="header_content">
+                <div class="header_content_top">
+                    <h1>
+                        <a href="http://localhost/pages/index.html">
+                            <img src="http://localhost/images/logo/logo5.png" alt=""/>
+                        </a>
+                    </h1>
+                    <ul>
+                        <li class="concert_hall selected_li">音乐厅</li>
+                        <li class="my_musics">我的音乐</li>
+                    </ul>
+                    <div class="mod_top_login">
+                        <a href="javascript:;">登录</a>
+                    </div>
+                </div>
+                <div class="header_content_bottom">
+                    <ul>
+                        <li class="">
+                            <a href="http://localhost/pages/index.html">首页</a>
+                        </li>
+                        <li><a href="javascript:;">歌手</a></li>
+                        <li><a href="javascript:;">新歌</a></li>
+                        <li><a href="javascript:;">专辑</a></li>
+                        <li><a href="javascript:;">排行榜</a></li>
+                        <li>
+                            <a href="javascript:;">分类歌单</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">MV</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">音游</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <div class="mod_data">
+                    <span class="data_cover" id="poster">
+                        <img class="data_photo" v-bind:src="songDetail.cover" v-bind:alt="songDetail.songname">
+                    </span>
+                <div class="data_cont">
+                    <div class="data_cont_name">
+                        <h1 class="data_cont_name_txt" v-bind:title="songDetail.songname">{{songDetail.songname}}</h1>
+                    </div>
+                    <div class="data_cont_singer">
+                        <span class="iconfont icon_singer">&#xe61f;</span>
+                        <a class="data_cont_singer_txt" href="javascript:;" v-bind:title="songDetail.singer">{{songDetail.singer}}</a>
+                    </div>
+                    <ul class="data_cont_info">
+                        <li class="data_cont_info_item">
+                            专辑：
+                            <a v-bind:title="songDetail.album" href="">{{songDetail.album}}</a>
+                        </li>
+                        <li class="data_cont_info_item">
+                            语言：
+                            {{songDetail.language}}
+                        </li>
+                        <li class="data_cont_info_item">
+                            流派：
+                            {{songDetail.sect}}
+                        </li>
+                        <li class="data_cont_info_item">
+                            发行时间：
+                            {{songDetail.publishTime}}
+                        </li>
+                    </ul>
+                    <div class="data_cont_actions">
+                        <a class="mod_btn_blue" v-bind:sid="songDetail.id">
+                            <span class="iconfont data_cont_act_play">&#xe75d;</span>
+                            <span class="dct_btn_txt">播放</span>
+                        </a>
+                        <a class="mod_btn mod_collect_btn">
+                            <span class="iconfont data_cont_act_like">&#xe631;</span>
+                            <span class="dct_btn_txt">收藏</span>
+                        </a>
+                        <a class="mod_btn mod_report_btn">
+                            <span class="iconfont data_cont_act_report">&#xe6ed;</span>
+                            <span class="dct_btn_txt">举报</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="detail_layout">
+                <div class="detail_layout_main">
+                    <div class="det_lay_lyric">
+                        <div class="lyric_hd">
+                            <h2 class="lyric_tab">歌词</h2>
+                            <a class="iconfont btn_copy_lyric" title="复制歌词">&#xe609;</a>
+                        </div>
+                        <div class="lyric_cont limit">
+                            <div class="lyric_cont_box" id="lyr_content">
+                            </div>
+                            <a class="c_txt_show">
+                                [展开]
+                            </a>
+                        </div>
+                    </div>
+                    <div class="det_lay_comment">
+                        <div class="part_hd">
+                            <h2 class="part_hd_tit">
+                                评论
+                                <span class="part_hd_count">共1条</span>
+                            </h2>
+                        </div>
+                        <div class="comment">
+                            <div class="comment_tab">
+                                <div class="tab_order">
+                                    <ul>
+                                        <li class="hot_comment cur">按热度排序</li>
+                                        <li class="new_comment">按时间排序</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="comment_input">
+                                <div class="comment_textarea">
+                                    <div class="comment_tex_inner">
+                                        <div class="comment_tex_default" contenteditable="true" style="display: block">
+                                            留言
+                                        </div>
+                                        <div class="comment_tex_input" contenteditable="true"
+                                             style="display: none"></div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="comment_submit">发表评论</button>
+                            </div>
+                            <div class="comment_list">
+                                <div class="list_item reply_wrap" v-bind:reply_index="0">
+                                    <div class="user_face">
+                                        <a href="">
+                                            <img class="music_avatar" src="../images/avatar/a3.png">
+                                        </a>
+                                    </div>
+                                    <div class="chat_con">
+                                        <div class="user_name">
+                                            <a href="" target="_black" class="name" style="color:#000;">账号测试员</a>
+                                        </div>
+                                        <p class="user_reply">如果在一个 \<\a\> 标签内包含一个 target 属性，浏览器将会载入和显示用这个标签的 href
+                                            属性命名的、名称与这个目标吻合的框架或者窗口中的文档。如果这个指定名称或 id
+                                            的框架或者窗口不存在，浏览器将打开一个新的窗口，给这个窗口一个指定的标记，然后将新的文档载入那个窗口。从此以后，超链接文档就可以指向这个新的窗口。</p>
+                                        <div class="info">
+                                            <span class="time">2022-03-11 18:25</span>
+                                            <span class="like ">
+                                                <i>ic</i>
+                                                <span>666</span>
+                                            </span>
+                                            <a class="btn_reply">回复</a>
+                                            <a class="btn_report">举报</a>
+                                        </div>
+                                        <div class="reply_box">
+                                            <div class="list_item reply_wrap" v-bind:reply_index="0">
+                                                <a href="" class="reply_face">
+                                                    <img class="music_avatar" src="../images/avatar/a1.png">
+                                                </a>
+                                                <div class="reply_con">
+                                                    <div class="user_name">
+                                                        <a href="" class="name">李四</a>
+                                                        <span class="text_con">采访那个搞笑的人如何憋笑</span>
+                                                    </div>
+                                                </div>
+                                                <div class="info">
+                                                    <span class="time">2022-03-11 18:32</span>
+                                                    <span class="like ">
+                                                        <i>ic</i>
+                                                        <span>62</span>
+                                                    </span>
+                                                    <a class="btn_reply">回复</a>
+                                                    <a class="btn_report">举报</a>
+                                                </div>
+                                            </div>
+                                            <div class="list_item reply_wrap" v-bind:reply_index="1">
+                                                <a href="" class="reply_face">
+                                                    <img class="music_avatar" src="../images/avatar/a2.png">
+                                                </a>
+                                                <div class="reply_con">
+                                                    <div class="user_name">
+                                                        <a href="" class="name">王五</a>
+                                                        <span class="text_con">回复 <a
+                                                                href="" target="_blank">@李四 </a>：2333</span>
+                                                    </div>
+                                                </div>
+                                                <div class="info">
+                                                    <span class="time">2022-03-11 18:33</span>
+                                                    <span class="like ">
+                                                        <i>ic</i>
+                                                        <span>10</span>
+                                                    </span>
+                                                    <a class="btn_reply">回复</a>
+                                                    <a class="btn_report">举报</a>
+                                                </div>
+                                            </div>
+                                            <div class="view_more" style="display: none">共<b>23</b>条回复, <a
+                                                    class="btn_more">点击查看</a></div>
+                                            <div class="paging_box" style="display: block">
+                                                <span class="result">共3页</span>
+                                                <span class="disabled" style="display: none">上一页</span>
+                                                <span class="page_current">1</span>
+                                                <a href="javascript:;" class="tcd_number">2</a>
+                                                <a href="javascript:;" class="tcd_number">3</a>
+                                                <a href="javascript:;" class="next">下一页</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list_item reply_wrap" v-bind:reply_index="1">
+                                    <div class="user_face">
+                                        <a href="">
+                                            <img class="music_avatar" src="../images/avatar/a4.png">
+                                        </a>
+                                    </div>
+                                    <div class="chat_con">
+                                        <div class="user_name">
+                                            <a href="" target="_black" class="name" style="color:#000;">账号测试员1</a>
+                                        </div>
+                                        <p class="user_reply">如果在一个 \<\a\> 标签内包含一个 target 属性，浏览器将会载入和显示用这个标签的 href
+                                            属性命名的、名称与这个目标吻合的框架或者窗口中的文档。如果这个指定名称或 id
+                                            的框架或者窗口不存在，浏览器将打开一个新的窗口，给这个窗口一个指定的标记，然后将新的文档载入那个窗口。从此以后，超链接文档就可以指向这个新的窗口。</p>
+                                        <div class="info">
+                                            <span class="time">2022-03-11 18:25</span>
+                                            <span class="like ">
+                                                <i>ic</i>
+                                                <span>666</span>
+                                            </span>
+                                            <a class="btn_reply">回复</a>
+                                            <a class="btn_report">举报</a>
+                                        </div>
+                                        <div class="reply_box">
+                                            <div class="list_item reply_wrap" v-bind:reply_index="0">
+                                                <a href="" class="reply_face">
+                                                    <img class="music_avatar" src="../images/avatar/a1.png">
+                                                </a>
+                                                <div class="reply_con">
+                                                    <div class="user_name">
+                                                        <a href="" class="name">李四</a>
+                                                        <span class="text_con">采访那个搞笑的人如何憋笑</span>
+                                                    </div>
+                                                </div>
+                                                <div class="info">
+                                                    <span class="time">2022-03-11 18:32</span>
+                                                    <span class="like ">
+                                                        <i>ic</i>
+                                                        <span>62</span>
+                                                    </span>
+                                                    <a class="btn_reply">回复</a>
+                                                    <a class="btn_report">举报</a>
+                                                </div>
+                                            </div>
+                                            <div class="list_item reply_wrap" v-bind:reply_index="1">
+                                                <a href="" class="reply_face">
+                                                    <img class="music_avatar" src="../images/avatar/a2.png">
+                                                </a>
+                                                <div class="reply_con">
+                                                    <div class="user_name">
+                                                        <a href="" class="name">王五</a>
+                                                        <span class="text_con">回复 <a
+                                                                href="" target="_blank">@李四 </a>：2333</span>
+                                                    </div>
+                                                </div>
+                                                <div class="info">
+                                                    <span class="time">2022-03-11 18:33</span>
+                                                    <span class="like ">
+                                                        <i>ic</i>
+                                                        <span>10</span>
+                                                    </span>
+                                                    <a class="btn_reply">回复</a>
+                                                    <a class="btn_report">举报</a>
+                                                </div>
+                                            </div>
+                                            <div class="view_more" style="display: none">共<b>23</b>条回复, <a
+                                                    class="btn_more">点击查看</a></div>
+                                            <div class="paging_box" style="display: block">
+                                                <span class="result">共3页</span>
+                                                <span class="disabled" style="display: none">上一页</span>
+                                                <span class="page_current">1</span>
+                                                <a href="javascript:;" class="tcd_number">2</a>
+                                                <a href="javascript:;" class="tcd_number">3</a>
+                                                <a href="javascript:;" class="next">下一页</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list_item reply_wrap" v-bind:reply_index="2">
+                                    <div class="user_face">
+                                        <a href="">
+                                            <img class="music_avatar" src="../images/avatar/a5.png">
+                                        </a>
+                                    </div>
+                                    <div class="chat_con">
+                                        <div class="user_name">
+                                            <a href="" target="_black" class="name" style="color:#000;">账号测试员2</a>
+                                        </div>
+                                        <p class="user_reply">如果在一个 \<\a\> 标签内包含一个 target 属性，浏览器将会载入和显示用这个标签的 href
+                                            属性命名的、名称与这个目标吻合的框架或者窗口中的文档。如果这个指定名称或 id
+                                            的框架或者窗口不存在，浏览器将打开一个新的窗口，给这个窗口一个指定的标记，然后将新的文档载入那个窗口。从此以后，超链接文档就可以指向这个新的窗口。</p>
+                                        <div class="info">
+                                            <span class="time">2022-03-11 18:25</span>
+                                            <span class="like ">
+                                                <i>ic</i>
+                                                <span>666</span>
+                                            </span>
+                                            <a class="btn_reply">回复</a>
+                                            <a class="btn_report">举报</a>
+                                        </div>
+                                        <div class="reply_box">
+                                            <div class="list_item reply_wrap" v-bind:reply_index="0">
+                                                <a href="" class="reply_face">
+                                                    <img class="music_avatar" src="../images/avatar/a1.png">
+                                                </a>
+                                                <div class="reply_con">
+                                                    <div class="user_name">
+                                                        <a href="" class="name">李四</a>
+                                                        <span class="text_con">采访那个搞笑的人如何憋笑</span>
+                                                    </div>
+                                                </div>
+                                                <div class="info">
+                                                    <span class="time">2022-03-11 18:32</span>
+                                                    <span class="like ">
+                                                        <i>ic</i>
+                                                        <span>62</span>
+                                                    </span>
+                                                    <a class="btn_reply">回复</a>
+                                                    <a class="btn_report">举报</a>
+                                                </div>
+                                            </div>
+                                            <div class="list_item reply_wrap" v-bind:reply_index="1">
+                                                <a href="" class="reply_face">
+                                                    <img class="music_avatar" src="../images/avatar/a2.png">
+                                                </a>
+                                                <div class="reply_con">
+                                                    <div class="user_name">
+                                                        <a href="" class="name">王五</a>
+                                                        <span class="text_con">回复 <a
+                                                                href="" target="_blank">@李四 </a>：2333</span>
+                                                    </div>
+                                                </div>
+                                                <div class="info">
+                                                    <span class="time">2022-03-11 18:33</span>
+                                                    <span class="like ">
+                                                        <i>ic</i>
+                                                        <span>10</span>
+                                                    </span>
+                                                    <a class="btn_reply">回复</a>
+                                                    <a class="btn_report">举报</a>
+                                                </div>
+                                            </div>
+                                            <div class="view_more" style="display: none">共<b>23</b>条回复, <a
+                                                    class="btn_more">点击查看</a></div>
+                                            <div class="paging_box" style="display: block">
+                                                <span class="result">共3页</span>
+                                                <span class="disabled" style="display: none">上一页</span>
+                                                <span class="page_current">1</span>
+                                                <a href="javascript:;" class="tcd_number">2</a>
+                                                <a href="javascript:;" class="tcd_number">3</a>
+                                                <a href="javascript:;" class="next">下一页</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <strong id="tip"></strong>
+</div>
+</body>
+<script src="../js/header.js"></script>
+<script src="../js/introduction/introduction.js"></script>
+<script>
+
+
+</script>
+</html>
